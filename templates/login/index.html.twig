@@ -51,8 +51,10 @@
                     </label>
                     <span class="ml-auto"><a href="#" class="forgot-pass">¿Has olvidado tu contraseña?</a></span>
                   </div>
-                    {# If you want to control the URL the user is redirected to on success
-                    <input type="hidden" name="_target_path" value="/account"> #}
+                  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    {# If you want to control the URL the user is redirected to on success#}
+                    <input type="hidden" name="_target_path" value="/home">
+
                   <input type="submit" value="Log In" class="btn btn-block btn-primary">
                   </div>
                 </form>

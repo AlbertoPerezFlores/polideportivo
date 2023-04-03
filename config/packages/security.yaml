@@ -1,4 +1,7 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
     enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
@@ -17,7 +20,14 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-
+            logout:
+                path: app_logout
+                target: app_login
+            json_login:
+                check_path: api_login
+            form_login:
+                login_path: login
+                check_path: login
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 

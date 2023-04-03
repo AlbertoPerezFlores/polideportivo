@@ -31190,7 +31190,9 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 	margin-top: 5em;
 	margin-bottom: 10em;
 }
-
+.leermas{
+	margin-bottom: 0px;
+}
 
 /*
 *
