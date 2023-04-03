@@ -1,0 +1,37 @@
+
+              <!-- RD Navbar Panel -->
+              <div class="rd-navbar-panel">
+                <!-- RD Navbar Toggle-->
+                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap"><span></span></button>
+                <!-- RD Navbar Top Panel Toggle-->
+                <button class="rd-navbar-top-panel-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-top-panel"><span></span></button>
+                <!--Navbar Brand-->
+                <div class="rd-navbar-brand"><a href="index.html"><img width='173' height='30' src='images/logo.png' alt=''/></a></div>
+              </div>
+              <div class="rd-navbar-menu-wrap">
+                <div class="rd-navbar-nav-wrap">
+                  <div class="rd-navbar-mobile-scroll">
+                    <!--Navbar Brand Mobile-->
+                    <div class="rd-navbar-mobile-brand"><a href="index.html"><img width='173' height='30' src='images/logo.png' alt=''/></a></div>
+                    <!-- RD Navbar Nav-->
+                    <ul class="rd-navbar-nav">
+                      {% for m in menus %}
+
+                        {% if is_granted('ROLE_USER') and m.item != "publico" %}
+                        
+                        <li id="current" style="border:none">
+                          <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
+                        </li>
+
+                        {% elseif not is_granted('ROLE_USER') and m.item != "privado" %}
+                          <li id="current" style="border:none">
+                          <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
+                        </li>
+
+                        {% endif %}
+
+                        {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>

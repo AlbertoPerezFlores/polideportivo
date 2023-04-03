@@ -38,7 +38,7 @@
           <nav class="rd-navbar container rd-navbar-floated rd-navbar-dark" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-auto-height="true" data-md-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-stick-up="true">
             <div class="rd-navbar-inner">
               <!-- RD Navbar Top Panel-->
-              <div class="rd-navbar-top-panel context-dark bg-danger">
+              <div class="rd-navbar-top-panel bg-primary toggle-original-elements">
                 <div class="left-side">
                   <address class="contact-info text-left"><a href="tel:#"><span class="icon mdi mdi-cellphone-android novi-icon"></span><span class="text-middle">1-800-1324-567</span></a></address>
                 </div>
@@ -54,30 +54,9 @@
                   </ul>
                 </div>
               </div>
-              <!-- RD Navbar Panel -->
-              <div class="rd-navbar-panel">
-                <!-- RD Navbar Toggle-->
-                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-nav-wrap"><span></span></button>
-                <!-- RD Navbar Top Panel Toggle-->
-                <button class="rd-navbar-top-panel-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-top-panel"><span></span></button>
-                <!--Navbar Brand-->
-                <div class="rd-navbar-brand"><a href="index.html"><img width='173' height='30' src='images/logo.png' alt=''/></a></div>
-              </div>
-              <div class="rd-navbar-menu-wrap">
-                <div class="rd-navbar-nav-wrap">
-                  <div class="rd-navbar-mobile-scroll">
-                    <!--Navbar Brand Mobile-->
-                    <div class="rd-navbar-mobile-brand"><a href="index.html"><img width='173' height='30' src='images/logo.png' alt=''/></a></div>
-                    <!-- RD Navbar Nav-->
-                    <ul class="rd-navbar-nav">
-                      <li><a href="index.html"><span>Home</span></a></li>
-                      <li><a href="aboutcoach.html"><span>About Coach</span></a></li>
-                      <li class="active"><a href="typography.html"><span>Reservas</span></a></li>
-                      <li><a href="contacts.html"><span>Contact Us</span></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            {% block menu %}
+              {{ render(controller("App\\Controller\\MenuController:menu"))}}
+            {% endblock %}
             </div>
           </nav>
         </div>

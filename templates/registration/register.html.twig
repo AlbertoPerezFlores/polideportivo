@@ -1,21 +1,69 @@
+
 {% extends 'default.html.twig' %}
 
-{% block title %}Register{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+        <div class="row login-content">
+          <div class="col-md-6">
+            <img src="images/home-01-480x480.jpg" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-md-6 contents">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <div class="mb-4">
+                  <h3>Resgistrate</h3>
+                  <p class="mb-4">Resgistrate e inicia sesion para acceder a mas contenios.</p>
+                </div>
+                <!--Inicio formulario-->
+                {# <form action="{{ path('app_register') }}" method="post">
+                  <div class="form-group first">
+                    <label for="username">Correo electronico</label>
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ registrationForm.email }}">
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="_password">
+                  </div>
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Recuerdame</span>
+                      <input type="checkbox" checked="checked">
+                      <div class="control__indicator"></div>
+                    </label>
+                    <span class="ml-auto"><a href="#" class="forgot-pass">¿Has olvidado tu contraseña?</a></span>
+                  </div>
 
-    <h1>Register</h1>
+                    <input type="hidden" name="_target_path" value="/account">
+                  <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                  </div>
+                </form> #}
+                <!--Fin formulario-->
+                    {% for flash_error in app.flashes('verify_email_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                    {% endfor %}
+                    {{ form_start(registrationForm) }}
+                    <div class="form-group first">
+                        {{ form_row(registrationForm.email, {
+                            label: 'Email',
+                            attr : { 'class': 'form-control' } 
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                        }) }}
+                    </div>
+                    <div class="form-group last mb-4">
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Password',
+                            attr : { 'class': 'form-control' } 
+                        }) }}
+                    </div>
+                    <div class="d-flex mb-5 align-items-center">
+                    
+                     {{ form_row(registrationForm.agreeTerms) }}
+                    </div>
+                    <input type="hidden" name="_target_path" value="/home">
+                        <button type="submit" class="btn btn-block btn-primary">Register</button>
+                    {{ form_end(registrationForm) }}
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
 {% endblock %}
