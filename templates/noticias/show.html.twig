@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Noticias{% endblock %}
+
+{% block body %}
+    <h1>Noticias</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ noticia.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ noticia.titulo }}</td>
+            </tr>
+            <tr>
+                <th>Descrip</th>
+                <td>{{ noticia.descrip }}</td>
+            </tr>
+            <tr>
+                <th>DescripExtend</th>
+                <td>{{ noticia.descripExtend }}</td>
+            </tr>
+            <tr>
+                <th>Organizador</th>
+                <td>{{ noticia.organizador }}</td>
+            </tr>
+            <tr>
+                <th>Imagen</th>
+                <td>{{ noticia.imagen }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_noticias_index') }}">back to list</a>
+
+    <a href="{{ path('app_noticias_edit', {'id': noticia.id}) }}">edit</a>
+
+    {{ include('noticias/_delete_form.html.twig') }}
+{% endblock %}
