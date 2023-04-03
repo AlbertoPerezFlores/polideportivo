@@ -2,43 +2,61 @@
 
 
 {% block body %}
-<div class="container">
-    <h1>Noticias index</h1>
+          <section>
+            <div class="parallax-container breadcrumb-modern bg-gray-darkest" data-parallax-img="../images/background-04-1920x750.jpg">
+              <div class="parallax-content"> 
+                <div class="container section-top-98 section-bottom-34 section-lg-bottom-66 section-lg-98 section-xl-top-110 section-xl-bottom-41">
+                  <h2 class="d-none d-lg-block offset-top-30"><span class="big">Noticias</span></h2>
+                  <ul class="list-inline list-inline-dashed">
+                    <li class="list-inline-item"><a href="index.html">Inicio</a></li>
+                    <li class="list-inline-item">Noticias
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </header>
+      <!-- Page Content-->
+            <div class="container">
+                <h1>Noticias index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titulo</th>
-                <th>Descrip</th>
-                <th>DescripExtend</th>
-                <th>Organizador</th>
-                <th>Imagen</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for noticia in noticias %}
-            <tr>
-                <td>{{ noticia.id }}</td>
-                <td>{{ noticia.titulo }}</td>
-                <td>{{ noticia.descrip }}</td>
-                <td>{{ noticia.descripExtend }}</td>
-                <td>{{ noticia.organizador }}</td>
-                <td>{{ noticia.imagen }}</td>
-                <td>
-                    <a href="{{ path('app_noticias_show', {'id': noticia.id}) }}">show</a>
-                    <a href="{{ path('app_noticias_edit', {'id': noticia.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titulo</th>
+                            <th>Descrip</th>
+                            <th>DescripExtend</th>
+                            <th>Organizador</th>
+                            <th>Imagen</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for noticia in noticias %}
+                        <tr>
+                            <td>{{ noticia.id }}</td>
+                            <td>{{ noticia.titulo }}</td>
+                            <td>{{ noticia.descrip }}</td>
+                            <td>{{ noticia.descripExtend }}</td>
+                            <td>{{ noticia.organizador }}</td>
+                            <td>{{ noticia.imagen }}</td>
+                            <td>
+                                <a href="{{ path('app_noticias_show', {'id': noticia.id}) }}">show</a>
+                                <a href="{{ path('app_noticias_edit', {'id': noticia.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-    <a href="{{ path('app_noticias_new') }}">Create new</a>
-</div>
+                <a href="{{ path('app_noticias_new') }}">Create new</a>
+            </div>
+          
 {% endblock %}
