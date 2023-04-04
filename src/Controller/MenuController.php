@@ -62,7 +62,7 @@ class MenuController extends AbstractController
      */
     public function home(): Response
     {
-        return $this->render('home/home.html.twig', [
+        return $this->render('home/entrada.html.twig', [
             'controller_name' => 'HomeController',
         ]);
     }
