@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
   class LoginController extends AbstractController
   {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/loginss", name="app_loginss")
      */
 
 
@@ -29,7 +29,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
      }
  
      /**
-      * @Route("/logout", name="app_logout")
+      * @Route("/logoutss", name="app_logoutss")
       */
      public function logout(): Response
      {
