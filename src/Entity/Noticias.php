@@ -42,6 +42,11 @@ class Noticias
      */
     private $imagen;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $Fecha_publicacion;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Noticias
     public function setImagen($imagen): self
     {
         $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    public function getFechaPublicacion(): ?\DateTimeInterface
+    {
+        return $this->Fecha_publicacion;
+    }
+
+    public function setFechaPublicacion(\DateTimeInterface $Fecha_publicacion): self
+    {
+        $this->Fecha_publicacion = $Fecha_publicacion;
 
         return $this;
     }

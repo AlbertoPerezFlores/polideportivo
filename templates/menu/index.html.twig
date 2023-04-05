@@ -6,13 +6,13 @@
                 <!-- RD Navbar Top Panel Toggle-->
                 <button class="rd-navbar-top-panel-toggle" data-rd-navbar-toggle=".rd-navbar, .rd-navbar-top-panel"><span></span></button>
                 <!--Navbar Brand-->
-                <div class="rd-navbar-brand"><a href="index.html"><img width='173' height='30' src='../images/logo.png' alt=''/></a></div>
+                <div class="rd-navbar-brand"><a href="index.html"><img width='173' height='30' src="{{ asset('images/logo.png') }}" alt=''/></a></div>
               </div>
               <div class="rd-navbar-menu-wrap">
                 <div class="rd-navbar-nav-wrap">
                   <div class="rd-navbar-mobile-scroll">
                     <!--Navbar Brand Mobile-->
-                    <div class="rd-navbar-mobile-brand"><a href="index.html"><img width='173' height='30' src='../images/logo.png' alt=''/></a></div>
+                    <div class="rd-navbar-mobile-brand"><a href="index.html"><img width='173' height='30' src="{{ asset('images/logo.png') }}" alt=''/></a></div>
                     <!-- RD Navbar Nav-->
                     <ul class="rd-navbar-nav">
                       {% for m in menus %}
@@ -39,7 +39,7 @@
                           <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
                         </li>  
 
-                        {% elseif is_granted('ROLE_ADMIN')%}
+                        {% elseif is_granted('ROLE_ADMIN') and m.item != "publico" %}
                         <li id="current" style="border:none">
                           <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
                         </li>

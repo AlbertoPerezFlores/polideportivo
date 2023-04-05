@@ -6,6 +6,9 @@ use App\Entity\Noticias;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\File;
 
 class NoticiasType extends AbstractType
 {
@@ -16,7 +19,14 @@ class NoticiasType extends AbstractType
             ->add('descrip')
             ->add('descripExtend')
             ->add('organizador')
-            ->add('imagen')
+            ->add('imagen',Filetype::class,[
+                'data_class' => null,
+            ])
+            ->add('fechapublicacion',DateType::class,[
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+            ])
+
         ;
     }
 

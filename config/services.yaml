@@ -6,6 +6,10 @@
 parameters:
 
 services:
+    App\Command\SetUserRolesCommand:
+        tags: [console.command]
+        arguments:
+            $userRepository: '@App\Repository\UserRepository'
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
