@@ -17,7 +17,7 @@
                     <ul class="rd-navbar-nav">
                       {% for m in menus %}
 
-                        {% if not is_granted('ROLE_USER') and m.item != "privado" %}
+                        {# {% if not is_granted('ROLE_USER') and m.item != "privado" %}
                         
                         <li id="current" style="border:none">
                           <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
@@ -28,7 +28,24 @@
                           <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
                         </li>
 
+                        {% endif %} #}
+                        {% if is_granted('ROLE_USER') and m.item != "publico" %}
+                        <li id="current" style="border:none">
+                          <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
+                        </li>
+                        {% elseif not is_granted('ROLE_USER') and m.item != "privado" %}
+                        
+                        <li id="current" style="border:none">
+                          <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
+                        </li>  
+
+                        {% elseif is_granted('ROLE_ADMIN')%}
+                        <li id="current" style="border:none">
+                          <a href="{{ path(m.enlace)}}" shape="rect">{{m.titulo}}</a>
+                        </li>
+                      
                         {% endif %}
+
 
                         {% endfor %}
                     </ul>
