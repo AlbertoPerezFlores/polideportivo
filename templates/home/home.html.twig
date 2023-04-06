@@ -4,7 +4,7 @@
 {% block body %}
         <div class="swiper-container swiper-slider" data-loop="false" data-autoplay="5500" data-dragable="false">
           <div class="swiper-wrapper text-center">
-            <div class="swiper-slide" data-slide-bg="images/fotosPoli/FotoPoli2Esc.jpg" data-preview-bg="images/fotosPoli/FotoPoli2Esc.jpg">
+            <div class="swiper-slide" data-slide-bg="{{ asset('images/fotosPoli/FotoPoli2Esc.jpg') }}" data-preview-bg="{{ asset('images/fotosPoli/FotoPoli2Esc.jpg') }}">
               <div class="swiper-caption swiper-parallax" data-speed="0.5" data-fade="true" style="background: #0000008f;">
                 <div class="swiper-slide-caption">
                   <div class="container">
@@ -25,7 +25,7 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="images/fotosPoli/FotoPoli3Esc.jpg" data-preview-bg="images/fotosPoli/FotoPoli3Esc.jpg">
+            <div class="swiper-slide" data-slide-bg="{{ asset('images/fotosPoli/FotoPoli3Esc.jpg') }}" data-preview-bg="{{ asset('images/fotosPoli/FotoPoli3Esc.jpg') }}">
               <div class="swiper-caption swiper-parallax" data-speed="0.5" data-fade="true" style="background: #0000008f;">
                 <div class="swiper-slide-caption">
                   <div class="container">
@@ -46,7 +46,7 @@
                 </div>
               </div>
             </div>
-            <div class="swiper-slide" data-slide-bg="images/fotosPoli/FotoPoli4Esc.jpg" data-preview-bg="images/fotosPoli/FotoPoli4Esc.jpg">
+            <div class="swiper-slide" data-slide-bg="{{ asset('images/fotosPoli/FotoPoli4Esc.jpg') }}" data-preview-bg="{{ asset('images/fotosPoli/FotoPoli4Esc.jpg') }}">
               <div class="swiper-caption swiper-parallax" data-speed="0.5" data-fade="true" style="background: #0000008f;">
                 <div class="swiper-slide-caption">
                   <div class="container">
@@ -115,7 +115,7 @@
         <div class="owl-carousel owl-carousel-default d-lg-none-owl-dots veil-owl-nav d-lg-owl-nav" data-items="1" data-sm-items="2" data-lg-items="3" data-xl-items="4" data-xl-items="5" data-nav="true" data-dots="true" data-nav-class="[&quot;owl-prev mdi mdi-chevron-left&quot;, &quot;owl-next mdi mdi-chevron-right&quot;]">
           <div>
             <!-- Thumbnail Terry-->
-            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="images/fotosPoli/TenisEsc.jpg" alt=""/></a>
+            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="{{ asset('images/fotosPoli/TenisEsc.jpg') }}" alt=""/></a>
               <figcaption>
                 <div>
                   <h4 class="thumbnail-terry-title">Escuela de Tenis</h4>
@@ -126,7 +126,7 @@
           </div>
           <div>
             <!-- Thumbnail Terry-->
-            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="images/fotosPoli/PadelEsc.jpg" alt=""/></a>
+            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="{{ asset('images/fotosPoli/PadelEsc.jpg') }}" alt=""/></a>
               <figcaption>
                 <div>
                   <h4 class="thumbnail-terry-title">Escuela de Padel</h4>
@@ -137,7 +137,7 @@
           </div>
           <div>
             <!-- Thumbnail Terry-->
-            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="images/fotosPoli/FutbolEsc.jpg" alt=""/></a>
+            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="{{ asset('images/fotosPoli/FutbolEsc.jpg') }}" alt=""/></a>
               <figcaption>
                 <div>
                   <h4 class="thumbnail-terry-title">Escuela de Fútbol 7</h4>
@@ -148,7 +148,7 @@
           </div>
           <div>
             <!-- Thumbnail Terry-->
-            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="images/fotosPoli/BaloceEsc.jpg" alt=""/></a>
+            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="{{ asset('images/fotosPoli/BaloceEsc.jpg') }}" alt=""/></a>
               <figcaption>
                 <div>
                   <h4 class="thumbnail-terry-title">Escuela de Baloncesto</h4>
@@ -159,7 +159,7 @@
           </div>
           <div>
             <!-- Thumbnail Terry-->
-            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="images/fotosPoli/Futbol2Esc.jpg" alt=""/></a>
+            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="{{ asset('images/fotosPoli/Futbol2Esc.jpg') }}" alt=""/></a>
               <figcaption>
                 <div>
                   <h4 class="thumbnail-terry-title">Escuela de Fútbol 11</h4>
@@ -170,7 +170,7 @@
           </div>
           <div>
             <!-- Thumbnail Terry-->
-            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="images/fotosPoli/torneoEsc.jpg" alt=""/></a>
+            <figure class="thumbnail-terry"><a href="#"><img width="480" height="480" src="{{ asset('images/fotosPoli/torneoEsc.jpg') }}" alt=""/></a>
               <figcaption>
                 <div>
                   <h4 class="thumbnail-terry-title">Apuntate a Torneos</h4>
@@ -267,7 +267,7 @@
       </section> #}
       <!-- Testimonials-->
       <section data-preset='{"title":"Testimonials","category":"content, testimonials, parallax","reload":true,"id":"testimonials"}'>
-        <div class="parallax-container" data-parallax-img="images/background-05-1920x850.jpg">
+        <div class="parallax-container" data-parallax-img="{{ asset('images/background-04-1920x750.jpg') }}">
           <div class="parallax-content">
             <div class="bg-overlay-gray-darkest context-dark">
               <div class="container section-98 section-md-110">
@@ -279,7 +279,7 @@
                     <div class="owl-carousel owl-carousel-testimonials-2" data-items="1" data-nav="true" data-dots="false" data-nav-class="[&quot;owl-prev mdi mdi-chevron-left&quot;, &quot;owl-next mdi mdi-chevron-right&quot;]">
                       <div>
                         <blockquote class="quote quote-slider-3">
-                          <p class="quote-body">Vine aqui buscando un polideportivo, para mi familia y nos enamoramos de este sitio, una administración amigable y con unos eventos inmejorables</p><img class="quote-img rounded-circle" width="80" height="80" src="images/fotosPoli/Persona1Esc.jpg" alt="Alice Wilson"/>
+                          <p class="quote-body">Vine aqui buscando un polideportivo, para mi familia y nos enamoramos de este sitio, una administración amigable y con unos eventos inmejorables</p><img class="quote-img rounded-circle" width="80" height="80" src="{{ asset('images/fotosPoli/Persona1Esc.jpg') }}" alt="Alice Wilson"/>
                           <p class="font-weight-bold quote-author">
                             <cite class="text-normal">Alicia Perez</cite>
                           </p>
@@ -288,7 +288,7 @@
                       </div>
                       <div>
                         <blockquote class="quote quote-slider-3">
-                          <p class="quote-body">Ambiente inmejorable donde todas las personas se ayudan entre si y te enseñan lo mejor que pueden y con paciencia, se lo recomiendo siempre a todos mis amigos</p><img class="quote-img rounded-circle" width="80" height="80" src="images/fotosPoli/Persona2Esc.jpg" alt="Julie Smith"/>
+                          <p class="quote-body">Ambiente inmejorable donde todas las personas se ayudan entre si y te enseñan lo mejor que pueden y con paciencia, se lo recomiendo siempre a todos mis amigos</p><img class="quote-img rounded-circle" width="80" height="80" src="{{ asset('images/fotosPoli/Persona2Esc.jpg') }}" alt="Julie Smith"/>
                           <p class="font-weight-bold quote-author">
                             <cite class="text-normal">Julio Marin</cite>
                           </p>
