@@ -1,2 +1,0 @@
-app.user.set_roles:
-    command: App\Command\SetUserRolesCommand

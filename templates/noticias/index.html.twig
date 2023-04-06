@@ -75,7 +75,7 @@
               {% else %}
             <div class="buscador">
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon2">
                     <div class="input-group-append">
@@ -87,7 +87,7 @@
             </div>
               {% endif %}
                 
-              {% for noticia in noticias %}
+              {% for noticia in pagination %}
               {% if is_granted('ROLE_ADMIN')%}
               <div class="card mb-3 card-escuela" style="max-width: 100%; min-height: 310px;">
                 <div class="row no-gutters">
@@ -134,6 +134,11 @@
                             <h1 colspan="7">No hay noticias</h1>
                         </tr>
             {% endfor %}
+
+            <div class="pagination">
+              {{ knp_pagination_render(pagination,
+              
+              ) }}
             </div>
-          
+          </div>
 {% endblock %}
