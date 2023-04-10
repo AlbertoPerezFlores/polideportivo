@@ -1,4 +1,4 @@
-{% extends 'default.html.twig' %}
+{# {% extends 'default.html.twig' %}
 
 {% block title %}Noticias{% endblock %}
 
@@ -39,4 +39,74 @@
     <a href="{{ path('app_noticias_edit', {'id': noticia.id}) }}">edit</a>
 
     {{ include('noticias/_delete_form.html.twig') }}
+{% endblock %} #}
+
+{% extends 'default.html.twig' %}
+
+{% block body %}
+          <section>
+            <div class="parallax-container breadcrumb-modern bg-gray-darkest" data-parallax-img="{{ asset('images/background-04-1920x750.jpg') }}">
+              <div class="parallax-content"> 
+                <div class="container section-top-98 section-bottom-34 section-lg-bottom-66 section-lg-98 section-xl-top-110 section-xl-bottom-41">
+                  <h2 class="d-none d-lg-block offset-top-30"><span class="big">Noticias</span></h2>
+                  <ul class="list-inline list-inline-dashed">
+                    <li class="list-inline-item"><a href="index.html">Inicio</a></li>
+                    <li class="list-inline-item">Noticias
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </header>
+      <!--Welcome-->
+          <div class="container text-left">
+
+            <h1> {{ noticia.titulo }} </h1>
+            <div class="col-xl-12">
+              <p> 
+                  <h6>{{ noticia.organizador }} </h6>
+              </p>
+            </div>
+                <hr class="divider bg-red">
+
+            <div class="col-md-12 text-center">
+                <img class="img-fluid" style="width: 640px" src="{{ asset('images/portfolio-16-370x280.jpg') }}">
+            </div>
+                <hr class="divider bg-red">
+            <div class="col-xl-12">
+              <p> 
+                {{ noticia.descrip }}
+              </p>
+            </div>
+
+            <div class="col-xl-12 row" style="margin-bottom: 10em;">
+
+                <p class="col-md-12"> 
+                    {{ noticia.descripExtend }}
+                </p>
+            </div>
+            <div class="col-xl-12 row" style="margin-bottom: 1em;">
+                {% if is_granted('ROLE_ADMIN')%}
+                    <div class="col-md-4">
+                        <a type="button" class="btn btn-primary btn-block" href="{{ path('app_noticias_index') }}">Volver a la lista</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a type="button" class="btn btn-warning btn-block" href="{{ path('app_noticias_edit', {'id': noticia.id}) }}"><i class="fa fa-pencil" style="font-size:24px"></i></a>
+                    </div>
+                    <div class="col-md-4">
+                        {{ include('noticias/_delete_form.html.twig') }}
+                    </div>
+                {% else %}
+                    <div class="col-md-12">
+                        <a type="button" class="btn btn-primary btn-block" href="{{ path('app_noticias_index') }}">Volver a la lista</a>
+                    </div>
+                {% endif %}
+
+            </div>
+
+          </div>
+
+
 {% endblock %}
