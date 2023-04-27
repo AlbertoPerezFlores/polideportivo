@@ -42,6 +42,7 @@ class Horario
 
     /**
      * @ORM\ManyToOne(targetEntity=Dias::class)
+     * @ORM\JoinColumn(nullable=false)
      */
     private $Dia;
 
