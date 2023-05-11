@@ -29,6 +29,12 @@ class Actividades
      */
     private $horarios;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=cssclass::class, inversedBy="actividades")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $cssclass;
+
     public function __construct()
     {
         $this->horarios = new ArrayCollection();
@@ -77,6 +83,18 @@ class Actividades
                 $horario->setActividad(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCssclass(): ?cssclass
+    {
+        return $this->cssclass;
+    }
+
+    public function setCssclass(?cssclass $cssclass): self
+    {
+        $this->cssclass = $cssclass;
 
         return $this;
     }
