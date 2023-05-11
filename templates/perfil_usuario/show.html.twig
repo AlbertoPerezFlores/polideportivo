@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PerfilUsuario{% endblock %}
+
+{% block body %}
+    <h1>PerfilUsuario</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ perfil_usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ perfil_usuario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>{{ perfil_usuario.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>Fechanacimiento</th>
+                <td>{{ perfil_usuario.fechanacimiento ? perfil_usuario.fechanacimiento|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Altura</th>
+                <td>{{ perfil_usuario.altura }}</td>
+            </tr>
+            <tr>
+                <th>Peso</th>
+                <td>{{ perfil_usuario.peso }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_perfil_usuario_index') }}">back to list</a>
+
+    <a href="{{ path('app_perfil_usuario_edit', {'id': perfil_usuario.id}) }}">edit</a>
+
+    {{ include('perfil_usuario/_delete_form.html.twig') }}
+{% endblock %}

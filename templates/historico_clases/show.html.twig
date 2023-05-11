@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HistoricoClases{% endblock %}
+
+{% block body %}
+    <h1>HistoricoClases</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ historico_clase.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecha_Actividad</th>
+                <td>{{ historico_clase.fechaActividad ? historico_clase.fechaActividad|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_historico_clases_index') }}">back to list</a>
+
+    <a href="{{ path('app_historico_clases_edit', {'id': historico_clase.id}) }}">edit</a>
+
+    {{ include('historico_clases/_delete_form.html.twig') }}
+{% endblock %}

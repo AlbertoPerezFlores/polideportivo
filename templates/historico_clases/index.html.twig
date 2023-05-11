@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HistoricoClases index{% endblock %}
+
+{% block body %}
+    <h1>HistoricoClases index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha_Actividad</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for historico_clase in historico_clases %}
+            <tr>
+                <td>{{ historico_clase.id }}</td>
+                <td>{{ historico_clase.fechaActividad ? historico_clase.fechaActividad|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_historico_clases_show', {'id': historico_clase.id}) }}">show</a>
+                    <a href="{{ path('app_historico_clases_edit', {'id': historico_clase.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_historico_clases_new') }}">Create new</a>
+{% endblock %}
