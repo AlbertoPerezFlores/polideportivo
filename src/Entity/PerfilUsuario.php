@@ -18,12 +18,6 @@ class PerfilUsuario
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity=user::class, inversedBy="nombre", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $usuario;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nombre;
