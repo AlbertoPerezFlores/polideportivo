@@ -48,17 +48,6 @@ class PerfilUsuario
         return $this->id;
     }
 
-    public function getUsuario(): ?user
-    {
-        return $this->usuario;
-    }
-
-    public function setUsuario(user $usuario): self
-    {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
 
     public function getNombre(): ?string
     {
