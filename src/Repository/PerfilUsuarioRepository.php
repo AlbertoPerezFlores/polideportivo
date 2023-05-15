@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\PerfilUsuario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @extends ServiceEntityRepository<PerfilUsuario>
@@ -38,6 +39,7 @@ class PerfilUsuarioRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
 
 //    /**
 //     * @return PerfilUsuario[] Returns an array of PerfilUsuario objects

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,15 +13,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 
 use App\Entity\Menu;
+use App\Entity\user;
 use App\Repository\MenuRepository;
+use App\Repository\userRepository;
 
 class MenuController extends AbstractController
 {
 	private $menuRepository;
+    private $security;
 	
-	public function __construct ( MenuRepository $menuRepository )
+	public function __construct ( MenuRepository $menuRepository , Security $security)
     {
 			$this->menuRepository = $menuRepository;
+            $this->security = $security;
 	}
 	/**
      * @Route("/menu_menu",  name="menu_menu")
@@ -29,7 +33,9 @@ class MenuController extends AbstractController
 	public function menu(): Response
     {
 		$menus = $this->menuRepository->findMenu();
-
+        $user = $this->security->getUser();
+        $userId = $user ? $user->getId() : null;
+        
         /*$menus = $this->getDoctrine()
         ->getRepository(Menu::class)
         ->findAll();
@@ -45,7 +51,10 @@ class MenuController extends AbstractController
         */
 
 
-        return $this->render('menu/index.html.twig',array("menus"=>$menus));
+        return $this->render('menu/index.html.twig',[
+            "menus"=>$menus,
+            'iduser' => $userId
+        ]);
     }   
 	 
 	/**
@@ -64,6 +73,7 @@ class MenuController extends AbstractController
     {
         return $this->render('home/home.html.twig', [
             'controller_name' => 'HomeController',
+            'iduser' => $this->getUser()
         ]);
     }
   
