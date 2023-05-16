@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\NoticiasRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=NoticiasRepository::class)
  */
@@ -38,7 +39,7 @@ class Noticias
     private $organizador;
 
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="blob", nullable=true)
      */
     private $imagen;
 
