@@ -19,8 +19,9 @@ class NoticiasType extends AbstractType
             ->add('descrip')
             ->add('descripExtend')
             ->add('organizador')
-            ->add('imagen',Filetype::class,[
+            ->add('imagen',FileType::class,[
                 'data_class' => null,
+                'label' => 'Imagen'
             ])
             ->add('fechapublicacion',DateType::class,[
                 'widget' => 'single_text',

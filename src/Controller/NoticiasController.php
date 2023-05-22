@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/noticias")
@@ -42,7 +43,17 @@ class NoticiasController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($request->files->has('noticias')) {
+                $imagenFile = $request->files->get('noticias')['imagen'];
+    
+                if ($imagenFile instanceof UploadedFile) {
+                    $contenidoImagen = base64_encode(file_get_contents($imagenFile->getPathname()));
+                    $noticia->setImagen($contenidoImagen);
+                    
+                }
+            }
             $noticiasRepository->add($noticia, true);
+    
 
             return $this->redirectToRoute('app_noticias_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -58,8 +69,12 @@ class NoticiasController extends AbstractController
      */
     public function show(Noticias $noticia): Response
     {
+        //mostrar imagen de la noticia que esta en base64 como una imagen
+
+
+
         return $this->render('noticias/show.html.twig', [
-            'noticia' => $noticia,
+            'noticia' => $noticia
         ]);
     }
 
@@ -71,8 +86,19 @@ class NoticiasController extends AbstractController
         $form = $this->createForm(NoticiasType::class, $noticia);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($request->files->has('noticias')) {
+                $imagenFile = $request->files->get('noticias')['imagen'];
+    
+                if ($imagenFile instanceof UploadedFile) {
+                    $contenidoImagen = base64_encode(file_get_contents($imagenFile->getPathname()));
+                    $noticia->setImagen($contenidoImagen);
+                    
+                }
+            }
             $noticiasRepository->add($noticia, true);
+    
 
             return $this->redirectToRoute('app_noticias_index', [], Response::HTTP_SEE_OTHER);
         }
