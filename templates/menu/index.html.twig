@@ -32,8 +32,8 @@
                         {% if is_granted('ROLE_USER') and m.item != "publico" %}
 
                         {% if m.Titulo == "Perfil" %}
-                        <li id="current" style="border:none">
-                          <a href="{{ path(m.enlace, {'id': iduser})}}" shape="rect">{{m.titulo}}</a>
+                        <li id="current" style="border:none, color:black;">
+                          <a  href="{{ path(m.enlace, {'id': iduser})}}" shape="rect" style="color: black;">{{m.titulo}}</a>
                         </li>  
                         {% else %}
                         <li id="current" style="border:none">
