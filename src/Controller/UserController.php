@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 
 /**
  * @Route("/user")
@@ -58,18 +60,11 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="app_user_show", methods={"GET"})
      */
-    public function show(User $user,UserRepository $userRepository,PerfilUsuario $perfilUsuario,PerfilUsuarioRepository $perfilUsuarioRepository): Response
+    public function show(User $user): Response
     {
-        // $query = $this->entityManager->createQuery('SELECT * FROM user u left JOIN perfil_usuario pu ON u.perfil_id=pu.id WHERE u.id = :userId');
-        // $query->setParameter('userId', $this->getUser());
-        // $userprofile = $query->getResult();
-
-        
-
-
         return $this->render('user/show.html.twig', [
-            'user' => $user,
-            // 'userprofile' => $userprofile,
+            'user' => $user
+            // 'userprofile' => $perfilUsuario,
         ]);
     }
 

@@ -73,9 +73,10 @@ class PerfilUsuario
         return $this;
     }
 
-    public function getFechanacimiento(): ?\DateTimeInterface
+    public function getFechanacimiento(): ?string
     {
-        return $this->fechanacimiento;
+        $fechanacimiento = $this->fechanacimiento->format('d-m-Y');
+        return $fechanacimiento;
     }
 
     public function setFechanacimiento(?\DateTimeInterface $fechanacimiento): self
@@ -108,4 +109,5 @@ class PerfilUsuario
 
         return $this;
     }
+    
 }

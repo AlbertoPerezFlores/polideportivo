@@ -9,22 +9,42 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ perfilUsuario.id }}</td>
+                <td>{{ user.id }}</td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td>{{ perfilUsuario.email }}</td>
+                <td>{{ user.email }}</td>
             </tr>
             <tr>
                 <th>IsVerified</th>
-                <td>{{ perfilUsuario.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ user.perfil.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>{{ user.perfil.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de nacimiento</th>
+                <td>{{ user.perfil.fechanacimiento }}</td>
+            </tr>
+            <tr>
+                <th>Altura</th>
+                <td>{{ user.perfil.altura }}</td>
+            </tr>
+            <tr>
+                <th>Peso</th>
+                <td>{{ user.perfil.peso }}</td>
             </tr>
         </tbody>
     </table>
 
     <a href="{{ path('app_user_index') }}">back to list</a>
 
-    <a href="{{ path('app_user_edit', {'id': perfilUsuario.id}) }}">edit</a>
+    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
 
     {{ include('user/_delete_form.html.twig') }}
 {% endblock %}
