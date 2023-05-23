@@ -71,7 +71,7 @@ class MenuController extends AbstractController
      */
     public function home(): Response
     {
-        return $this->render('home/home.html.twig', [
+        return $this->render('home/User.html.twig', [
             'controller_name' => 'HomeController',
             'iduser' => $this->getUser()
         ]);
