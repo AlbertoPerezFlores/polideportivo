@@ -60,14 +60,16 @@ class UserController extends AbstractController
      */
     public function show(User $user,UserRepository $userRepository,PerfilUsuario $perfilUsuario,PerfilUsuarioRepository $perfilUsuarioRepository): Response
     {
-        $query = $this->entityManager->createQuery('SELECT * FROM user u left JOIN perfil_usuario pu ON u.perfil_id=pu.id WHERE u.id = :userId');
-        $query->setParameter('userId', $this->getUser());
-        $userprofile = $query->getResult();
+        // $query = $this->entityManager->createQuery('SELECT * FROM user u left JOIN perfil_usuario pu ON u.perfil_id=pu.id WHERE u.id = :userId');
+        // $query->setParameter('userId', $this->getUser());
+        // $userprofile = $query->getResult();
+
+        
 
 
         return $this->render('user/show.html.twig', [
             'user' => $user,
-            'userprofile' => $userprofile,
+            // 'userprofile' => $userprofile,
         ]);
     }
 
