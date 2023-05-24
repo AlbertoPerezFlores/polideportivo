@@ -39,7 +39,7 @@ class Noticias
     private $organizador;
 
     /**
-     * @ORM\Column(type="blob", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $imagen;
 

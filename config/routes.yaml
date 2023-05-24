@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\MenuController::home
+upload_image:
+    path: /upload-image
+    controller: App\Controller\ImageController::uploadImage
+    methods: [POST]

@@ -11,12 +11,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Controller\ImageController;
 
 /**
  * @Route("/noticias")
  */
 class NoticiasController extends AbstractController
 {
+    private $imagecontroller;
+
+    public function __construct(ImageController $imagecontroller)
+    {
+        $this->imagecontroller = $imagecontroller;
+    }
     /**
      * @Route("/", name="app_noticias_index", methods={"GET"})
      */
@@ -47,8 +54,9 @@ class NoticiasController extends AbstractController
                 $imagenFile = $request->files->get('noticias')['imagen'];
     
                 if ($imagenFile instanceof UploadedFile) {
-                    $contenidoImagen = base64_encode(file_get_contents($imagenFile->getPathname()));
-                    $noticia->setImagen($contenidoImagen);
+                    $imagenFile = $this->imagecontroller->uploadImage($imagenFile);
+
+                    $noticia->setImagen($imagenFile);
                     
                 }
             }
@@ -92,8 +100,9 @@ class NoticiasController extends AbstractController
                 $imagenFile = $request->files->get('noticias')['imagen'];
     
                 if ($imagenFile instanceof UploadedFile) {
-                    $contenidoImagen = base64_encode(file_get_contents($imagenFile->getPathname()));
-                    $noticia->setImagen($contenidoImagen);
+                    $imagenFile = $this->imagecontroller->uploadImage($imagenFile);
+
+                    $noticia->setImagen($imagenFile);
                     
                 }
             }
