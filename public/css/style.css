@@ -22607,6 +22607,7 @@ html .unit-spacing-lg > * {
 .context-dark h1,
 .swiper-slide-caption h1, .bg-deluge .h1, .navbar-inverse .h1, .context-dark .h1, .swiper-slide-caption .h1, .bg-deluge h2, .navbar-inverse h2, .context-dark h2, .swiper-slide-caption h2, .bg-deluge .h2, .navbar-inverse .h2, .context-dark .h2, .swiper-slide-caption .h2, .bg-deluge h3, .navbar-inverse h3, .context-dark h3, .swiper-slide-caption h3, .bg-deluge .h3, .navbar-inverse .h3, .context-dark .h3, .swiper-slide-caption .h3, .bg-deluge h4, .navbar-inverse h4, .context-dark h4, .swiper-slide-caption h4, .bg-deluge .h4, .navbar-inverse .h4, .context-dark .h4, .swiper-slide-caption .h4, .bg-deluge h5, .navbar-inverse h5, .context-dark h5, .swiper-slide-caption h5, .bg-deluge .h5, .navbar-inverse .h5, .context-dark .h5, .swiper-slide-caption .h5, .bg-deluge h6, .navbar-inverse h6, .context-dark h6, .swiper-slide-caption h6, .bg-deluge .h6, .navbar-inverse .h6, .context-dark .h6, .swiper-slide-caption .h6 {
 	color: #fff;
+	font-size: 40px;
 	/* background-color: #1711404d; */
 	/*El fondo lo he puesto para que se pueda ver mejor, es algo que si vemos mal se puede quitar*/
 }
