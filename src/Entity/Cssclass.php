@@ -22,10 +22,10 @@ class Cssclass
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $cssclass;
+    private $Cssclass;
 
     /**
-     * @ORM\OneToMany(targetEntity=Actividades::class, mappedBy="cssclass")
+     * @ORM\OneToMany(targetEntity=Actividades::class, mappedBy="Cssclass")
      */
     private $actividades;
 
@@ -41,12 +41,12 @@ class Cssclass
 
     public function getCssclass(): ?string
     {
-        return $this->cssclass;
+        return $this->Cssclass;
     }
 
-    public function setCssclass(string $cssclass): self
+    public function setCssclass(string $Cssclass): self
     {
-        $this->cssclass = $cssclass;
+        $this->Cssclass = $Cssclass;
 
         return $this;
     }
