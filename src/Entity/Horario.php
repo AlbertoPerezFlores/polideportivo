@@ -46,6 +46,11 @@ class Horario
      */
     private $Dia;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $CapacidadVar;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -107,6 +112,18 @@ class Horario
     public function setDia(?Dias $Dia): self
     {
         $this->Dia = $Dia;
+
+        return $this;
+    }
+
+    public function getCapacidadVar(): ?int
+    {
+        return $this->CapacidadVar;
+    }
+
+    public function setCapacidadVar(?int $CapacidadVar): self
+    {
+        $this->CapacidadVar = $CapacidadVar;
 
         return $this;
     }

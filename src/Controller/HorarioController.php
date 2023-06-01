@@ -22,10 +22,33 @@ class HorarioController extends AbstractController
      */
     public function index(HorarioRepository $horarioRepository, DiasRepository $diasRepository, HoraHorarioRepository $horahorarioRepository): Response
     {
+        $hoy = new \DateTime();
+
+        $fechasSemana = array();
+    
+        $diasSemana = array(
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+            'Sunday'
+        );
+
+        foreach ($diasSemana as $dia) {
+            $fecha = clone $hoy;
+            $fecha->modify('next ' . $dia);
+            $fechasSemana[$dia] = $fecha;
+        }
+
         return $this->render('horario/index.html.twig', [
             'horarios' => $horarioRepository->findAll(),
             'dias' => $diasRepository->findAll(),
             'horas' => $horahorarioRepository->findAll(),
+            'hoy' => $hoy,
+            'fechasSemana' => $fechasSemana,
+
         ]);
     }
 
@@ -39,6 +62,10 @@ class HorarioController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $horario->setCapacidadVar($horario->getCapacidad());
+
+                
             $horarioRepository->add($horario, true);
 
             return $this->redirectToRoute('app_horario_index', [], Response::HTTP_SEE_OTHER);
@@ -69,6 +96,9 @@ class HorarioController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $horario->setCapacidadVar($horario->getCapacidad());
+
             $horarioRepository->add($horario, true);
 
             return $this->redirectToRoute('app_horario_index', [], Response::HTTP_SEE_OTHER);
