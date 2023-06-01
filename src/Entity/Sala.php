@@ -80,4 +80,9 @@ class Sala
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->nombre_sala;
+    }
 }

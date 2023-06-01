@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Horario index{% endblock %}
+
+{% block body %}
+    <h1>Horario index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Capacidad</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for horario in horarios %}
+            <tr>
+                <td>{{ horario.id }}</td>
+                <td>{{ horario.Capacidad }}</td>
+                <td>{{horario.dia.dia}}</td>
+                <td>{{horario.hora.hora|date('H:i')}}</td>
+                <td>{{horario.actividad.actividad}}</td>
+                <td>
+                    <a href="{{ path('app_horario_show', {'id': horario.id}) }}">show</a>
+                    <a href="{{ path('app_horario_edit', {'id': horario.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_horario_new') }}">Create new</a>
+
+
+
+    <table>
+  <thead>
+    <tr>
+      <th>Hora</th>
+      <th>Lunes</th>
+      <th>Martes</th>
+      <th>Miércoles</th>
+      <th>Jueves</th>
+      <th>Viernes</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+    {% for hora in horas %}
+      <tr>
+        <td>{{ hora  }}</td>
+
+        {% for dia in dias %}
+          {% set actividad = horarios|filter(a => a.hora.hora|date('H:i') == hora  and a.dia.dia == dia)|first %}
+          <td>{{ actividad is not null and actividad is not same as(false) ? actividad.actividad.actividad : '' }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

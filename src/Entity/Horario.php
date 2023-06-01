@@ -30,7 +30,7 @@ class Horario
     private $Sala;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Horahorario::class)
+     * @ORM\ManyToOne(targetEntity=HoraHorario::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $Hora;
@@ -75,12 +75,12 @@ class Horario
         return $this;
     }
 
-    public function getHora(): ?Horahorario
+    public function getHora(): ?HoraHorario
     {
         return $this->Hora;
     }
 
-    public function setHora(?Horahorario $Hora): self
+    public function setHora(?HoraHorario $Hora): self
     {
         $this->Hora = $Hora;
 
