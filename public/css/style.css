@@ -85,7 +85,7 @@
 /**/
 /*Thony horario*/
 
-
+/* 
 thead> tr > th { 
     background-color:#7a3e0f; 	
     border: 1px solid  rgb(0, 0, 0);
@@ -101,7 +101,7 @@ table{
     margin-right:20%;
 	/* display:block;
   place-content: center; */
-}
+/* }
 td {
     border-color: inherit;
     border-style: solid;
@@ -150,7 +150,7 @@ span {
 	text-align: center;
 	color: #800000;
 
-}
+} */ 
 
 
 

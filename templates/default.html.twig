@@ -1,7 +1,7 @@
 <!-- templates/default.html.twig -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<html class="wow-animation" lang="en">
   <head>
     <title>Web site</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,7 +23,7 @@
     <!-- IE Panel-->
     <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="{{ asset('images/ie8-panel/warning_bar_0000_us.jpg') }}" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <div class="page-loader page-loader-variant-1">
-      <div><img width='173' height='30' src="{{ asset('images/logo.png') }}" alt=''/>
+      <div><img width="173" height='30' src="{{ asset('images/logo.png') }}" alt=''/>
         <div class="offset-top-41 text-center">
           <div class="spinner"></div>
         </div>
@@ -54,16 +54,19 @@
                   </ul>
                 </div>
               </div>
+              {# Navbar menu #}
             {% block menu %}
               {{ render(controller("App\\Controller\\MenuController:menu"))}}
             {% endblock %}
             </div>
           </nav>
         </div>
-        <div class="context-dark">
+        {# <div class="context-dark"> #}
           <!-- Modern Breadcrumbs-->
           {% block body %} {% endblock %} 
-        
+          
+
+
       <!--1-->
       <!-- Page Footer-->
       <footer class="section-relative section-top-66 section-bottom-34 page-footer bg-gray-base context-dark novi-background" data-preset='{"title":"Footer","category":"footer","reload":true,"id":"footer"}'>
@@ -122,6 +125,7 @@
                             <li class="list-inline-item"><a class="novi-icon icon fa fa-linkedin icon-xxs icon-circle icon-darkest-filled" href="#"></a></li>
                           </ul>
                   </div>
+                  </div>
                   <p class="text-darker offset-top-20">PROYECTO FINAL &copy;   <br> 
                   <span id="copyright-year"></span>
                     Design&nbsp;by&nbsp;<a href="https://www.templatemonster.com">TemplateMonster</a>
@@ -130,7 +134,6 @@
               </div>
             </div>
           </div>
-        </div>
       </footer>
     </div>
     <!-- Global Mailform Output-->

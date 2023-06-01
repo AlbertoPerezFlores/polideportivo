@@ -80,4 +80,10 @@ class Cssclass
 
         return $this;
     }
+
+
+    public function __toString()
+    {
+        return $this->Cssclass;
+    }
 }
