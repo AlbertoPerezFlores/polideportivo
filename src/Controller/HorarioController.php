@@ -72,18 +72,14 @@ class HorarioController extends AbstractController
         }
 
         $historicoClase = new HistoricoClases();
-        $form = $this->createForm(HistoricoClasesType::class);
+        $form = $this->createForm(HistoricoClasesType::class, $historicoClase);
         $form->handleRequest($request);
 
 
        if ($form->isSubmitted() && $form->isValid()) {
-        // $fechaActividad = new DateTime($request->request->get('historico_clases')['fecha_Actividad']);
-        // $horaActividad = new DateTime($request->request->get('historico_clases')['HoraActividad']);
+        $HistoricoClasesRepository->add($historicoClase, true);
+
         
-        // $historicoClase->setFechaActividad($fechaActividad);
-        // $historicoClase->setHoraActividad($horaActividad);
-        
-            $this->HistoricoClasesController->AddReserva($request,$historicoClase, $HistoricoClasesRepository);
             return $this->redirectToRoute('app_horario_index', [], Response::HTTP_SEE_OTHER);
        }
 

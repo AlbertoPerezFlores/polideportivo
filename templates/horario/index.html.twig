@@ -112,7 +112,7 @@
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         </div>
-                        <form name="historico_clases" method="post">
+                        <form name="historico_clases" method="post" enctype="multipart/form-data">
                           <input type="hidden" id="historico_clases_fecha_Actividad_month" name="historico_clases[fecha_Actividad][month]" value="{{fechasSemana[diaTraducido]|date('m')|trim('0')}}"/>
                           <input type="hidden" id="historico_clases_fecha_Actividad_day" name="historico_clases[fecha_Actividad][day]" value="{{fechasSemana[diaTraducido]|date('d')|trim('0')}}"/>
                           <input type="hidden" id="historico_clases_fecha_Actividad_year" name="historico_clases[fecha_Actividad][year]" value="{{fechasSemana[diaTraducido]|date('Y')}}"/>
@@ -120,7 +120,7 @@
                           <input type="hidden" id="historico_clases_HoraActividad_minute" name="historico_clases[HoraActividad][minute]" value="0">
                           <input type="hidden" id="historico_clases_actividad" name="historico_clases[actividad]" value="{{actividad.actividad.id}}">
                           <input type="hidden" id="historico_clases_usuario" name="historico_clases[usuario]" value="{{userid}}">
-                          <input type="hidden" name="_tokenHC" value="{{ csrf_token('autenticaHC') }}">
+                          {# <input type="hidden" name="_tokenHC" value="{{ csrf_token('autenticaHC') }}"> #}
                             <button type="submit" class="btn btn-primary">Reservar</button>
                         </form>
                           {# <form name="historico_clases" action="{{ path('app_horario_index') }}" method="post">

@@ -24,10 +24,10 @@ class HistoricoClasesType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => HistoricoClases::class,
-            'csrf_protection' => true,
-            'csrf_field_name' => '_tokenHC',
-            // a unique key to help generate the secret token
-            'csrf_token_id'   => 'autenticaHC',
+            // 'csrf_protection' => true,
+            // 'csrf_field_name' => '_tokenHC',
+            // // a unique key to help generate the secret token
+            // 'csrf_token_id'   => 'autenticaHC',
         ]);
     }
 }
