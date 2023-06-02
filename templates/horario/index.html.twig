@@ -111,7 +111,7 @@
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        </div>
+
                         <form name="historico_clases" method="post" enctype="multipart/form-data">
                           <input type="hidden" id="historico_clases_fecha_Actividad_month" name="historico_clases[fecha_Actividad][month]" value="{{fechasSemana[diaTraducido]|date('m')|trim('0')}}"/>
                           <input type="hidden" id="historico_clases_fecha_Actividad_day" name="historico_clases[fecha_Actividad][day]" value="{{fechasSemana[diaTraducido]|date('d')|trim('0')}}"/>
@@ -122,7 +122,9 @@
                           <input type="hidden" id="historico_clases_usuario" name="historico_clases[usuario]" value="{{userid}}">
                           {# <input type="hidden" name="_tokenHC" value="{{ csrf_token('autenticaHC') }}"> #}
                             <button type="submit" class="btn btn-primary">Reservar</button>
-                        </form>
+                        </form> 
+
+                        </div>
                           {# <form name="historico_clases" action="{{ path('app_horario_index') }}" method="post">
                               <input type="hidden" name="fechaactividad" value="{{fechasSemana[diaTraducido]|date('Y-m-d')}}" />
                               <input type="hidden" name="horaactividad" value="{{actividad.hora.hora|date('H:i')}}" />
@@ -134,7 +136,6 @@
                         </div>
                       </div>
                     </div>
-                  </div>
               {% endfor %}
             {% endif %}
             </div>
