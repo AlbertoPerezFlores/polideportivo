@@ -36,36 +36,25 @@ class HistoricoClases
      */
     private $fecha_Actividad;
 
-    public function __construct()
-    {
-        $this->actividad = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $HoraActividad;
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, Actividades>
-     */
-    public function getActividad(): Collection
+    public function getActividad(): ?Actividades
     {
         return $this->actividad;
     }
 
-    public function addActividad(Actividades $actividad): self
+    public function setActividad(?Actividades $actividad): self
     {
-        if (!$this->actividad->contains($actividad)) {
-            $this->actividad[] = $actividad;
-        }
-
-        return $this;
-    }
-
-    public function removeActividad(Actividades $actividad): self
-    {
-        $this->actividad->removeElement($actividad);
+        $this->actividad = $actividad;
 
         return $this;
     }
@@ -93,4 +82,17 @@ class HistoricoClases
 
         return $this;
     }
+
+    public function getHoraActividad(): ?\DateTimeInterface
+    {
+        return $this->HoraActividad;
+    }
+
+    public function setHoraActividad(\DateTimeInterface $HoraActividad): self
+    {
+        $this->HoraActividad = $HoraActividad;
+
+        return $this;
+    }
+
 }
