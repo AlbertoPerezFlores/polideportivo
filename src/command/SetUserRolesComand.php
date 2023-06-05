@@ -1,6 +1,6 @@
 <?php
 
-namespace App\command;
+namespace App\Command;
 
 use App\Repository\UserRepository;
 use Symfony\Component\Console\Command\Command;

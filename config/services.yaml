@@ -7,10 +7,11 @@ parameters:
     app.upload_directory: '%kernel.project_dir%/public/custom/imagenes'
 
 services:
-    App\command\SetUserRolesCommand:
-        tags: [console.command]
-        arguments:
-            $userRepository: '@App\Repository\UserRepository'
+    # App\Command\SetUserRolesCommand:
+    #     tags: [console.command]
+    #     arguments:
+    #         $userRepository: '@App\Repository\UserRepository'
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -26,11 +27,11 @@ services:
             - '../src/Kernel.php'
 
     
-    App\command\UpdateCapacidadVarCommand:
-        arguments:
-            $entityManager: '@doctrine.orm.default_entity_manager'
-        tags:
-            - { name: 'console.command' }
+    # App\Command\UpdateCapacidadVarCommand:
+    #     arguments:
+    #         $entityManager: '@doctrine.orm.default_entity_manager'
+    #     tags:
+    #         - { name: 'console.command' }
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
