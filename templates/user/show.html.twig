@@ -68,9 +68,9 @@
           <ul class="list-group">
             {% for clase in historicoclases %}
               {% if clase.fechaActividad|date('d-m-Y') >= hoy|date('d-m-Y') %}
-                <li class="list-group-item active">Clase de {{clase.actividad.actividad}} el dia {{clase.fechaActividad|date('d-m-Y')}} a las {{clase.horaActividad|date('H:i')}}</li>  
+                <li class="list-group-item list-group-item-success">Clase de {{clase.actividad.actividad}} el dia {{clase.fechaActividad|date('d-m-Y')}} a las {{clase.horaActividad|date('H:i')}}</li>  
               {% else %}
-                <li class="list-group-item">Clase de {{clase.actividad.actividad}} el dia {{clase.fechaActividad|date('d-m-Y')}} a las {{clase.horaActividad|date('H:i')}}</li>  
+                <li class="list-group-item list-group-item-danger">Clase de {{clase.actividad.actividad}} el dia {{clase.fechaActividad|date('d-m-Y')}} a las {{clase.horaActividad|date('H:i')}}</li>  
               {% endif %}
             {% endfor %}
           </ul>
