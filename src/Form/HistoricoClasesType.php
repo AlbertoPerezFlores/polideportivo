@@ -7,6 +7,7 @@ use App\Entity\Horario;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class HistoricoClasesType extends AbstractType
 {
@@ -17,6 +18,12 @@ class HistoricoClasesType extends AbstractType
             ->add('HoraActividad')
             ->add('actividad')
             ->add('usuario')
+            ->add('Horario', EntityType::class, [
+                'class' => Horario::class,
+                'choice_label' => 'id', // Reemplaza 'nombre' por el nombre de la propiedad que deseas mostrar en la lista desplegable
+                'placeholder' => 'Seleccione un horario', // Opcional: agrega un marcador de posición en la lista desplegable
+            ])
+            ->add('Sala')
         ;
     }
 

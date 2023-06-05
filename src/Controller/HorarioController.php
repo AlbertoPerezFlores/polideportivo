@@ -20,6 +20,7 @@ use Symfony\Component\Security\Core\Security;
 use DateTime;
 
 
+
 /**
  * @Route("/horario")
  */
@@ -71,15 +72,41 @@ class HorarioController extends AbstractController
             $fechasSemana[$dia] = $fecha;
         }
 
+        // Resta un intervalo de un día a la fecha actual
+        $fechaMenosUnDia = clone $hoy;
+        $intervalo = new \DateInterval('P1D'); // Intervalo de un día
+        $fechaMenosUnDia->sub($intervalo);
+
+        $historicoClases = $HistoricoClasesRepository->createQueryBuilder('hc')
+        ->where('hc.usuario = :userId')
+        ->andWhere('hc.fecha_Actividad >= :fechaActual')
+        ->setParameter('userId', $userId)
+        ->setParameter('fechaActual', $fechaMenosUnDia)
+        ->orderBy('hc.fecha_Actividad', 'ASC')
+        ->getQuery()
+        ->getResult();
+
+
         $historicoClase = new HistoricoClases();
         $form = $this->createForm(HistoricoClasesType::class, $historicoClase);
         $form->handleRequest($request);
 
 
        if ($form->isSubmitted() && $form->isValid()) {
-        $HistoricoClasesRepository->add($historicoClase, true);
+        $horarioId = $historicoClase->getHorario()->getId();
+
+        $horario = $horarioRepository->findOneByid($horarioId);
+
+        // Verificar si se encontró el horario en la base de datos
+        $capacidadVar = $horario->getCapacidadVar();
+        $horario->setCapacidadvar($capacidadVar - 1);
+
+        // Guardar los cambios en la base de datos
+        $horarioRepository->add($horario, true);
 
         
+        $HistoricoClasesRepository->add($historicoClase, true);
+
             return $this->redirectToRoute('app_horario_index', [], Response::HTTP_SEE_OTHER);
        }
 
@@ -92,6 +119,7 @@ class HorarioController extends AbstractController
             'form' => $form->createview(),
             'fechasSemana' => $fechasSemana,
             'userid'=> $userId, 
+            'clasesreservadas' => $historicoClases,
         ]);
     }
 

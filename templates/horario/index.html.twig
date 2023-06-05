@@ -65,34 +65,83 @@
       <tr>
         <td scope="row" style="text-align: center; vertical-align: middle;">{{ hora }}</td>
         {% for dia in dias %}
+        {% set claseReservada = false %}
           {% set actividades = horarios|filter(a => a.hora.hora|date('H:i') == hora and a.dia.dia == dia) %}
           <td>
             <div class="col-12 row aling-items-center" style="margin-left: 0; margin-right: 0;">
             {% if actividades|length > 0 %}
               {% for actividad in actividades %}
               {% set modalId = 'exampleModalCenter' ~ actividad.id %}
+              {% set reservadamodalId = 'reservadaModalCenter' ~ actividad.id %}
+              {% set reservaid = 0 %}
+              {% set diaTraducido = dia|trans %}
                 {% if actividades|length == 1 %}
                 <div  class="col-12 {{actividad.actividad.cssclass}}">
+                {% if clasesreservadas|length == 0 %}
                   <a href="#" data-toggle="modal" data-target="{{ '#' ~ modalId }}" style="text-decoration: none; color: black;">
+                {% else %}
+                {% for rclase in clasesreservadas %}
+                      {% if not claseReservada %}
+                          {% if rclase.fechaActividad|date('Y-m-d') == fechasSemana[diaTraducido]|date('Y-m-d') and rclase.horaActividad|date('H:i') == actividad.hora.hora|date('H:i') and rclase.actividad.id == actividad.actividad.id %}
+                              {% set claseReservada = true %}
+                              {% set reservaid = rclase.id %}
+                              <a href="#" data-toggle="modal" data-target="{{ '#' ~ reservadamodalId }}" style="text-decoration: none; color: black;">
+                            {% else %}
+                              <a href="#" data-toggle="modal" data-target="{{ '#' ~ modalId }}" style="text-decoration: none; color: black;">
+                          {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                {% endif %}
                     <div>
-                        {{ actividad.actividad.actividad }}<br>
-                        {{ actividad.sala.nombreSala }}<br>
-                        {{ actividad.capacidadvar }}/{{ actividad.capacidad }}
+                    {{ actividad.actividad.actividad }}<br>
+                    {{ actividad.sala.nombreSala }}<br>
+                    {{ actividad.capacidadvar }}/{{ actividad.capacidad }}<br>
+                    {% set claseReservada = false %}
+                    {% for rclase in clasesreservadas %}
+                      {% if not claseReservada %}
+                          {% if rclase.fechaActividad|date('Y-m-d') == fechasSemana[diaTraducido]|date('Y-m-d') and rclase.horaActividad|date('H:i') == actividad.hora.hora|date('H:i') and rclase.actividad.id == actividad.actividad.id %}
+                              {% set claseReservada = true %}
+                              <p>Clase reservada</p>
+                          {% endif %}
+                      {% endif %}
+                    {% endfor %}
                     </div>
                   </a>
                 </div>
                 {% else %}
                 <div  class="col-6 {{actividad.actividad.cssclass}}">
+                {% if clasesreservadas|length == 0 %}
                   <a href="#" data-toggle="modal" data-target="{{ '#' ~ modalId }}" style="text-decoration: none; color: black;">
+                {% else %}
+                    {% for rclase in clasesreservadas %}
+                      {% if not claseReservada %}
+                          {% if rclase.fechaActividad|date('Y-m-d') == fechasSemana[diaTraducido]|date('Y-m-d') and rclase.horaActividad|date('H:i') == actividad.hora.hora|date('H:i') and rclase.actividad.id == actividad.actividad.id and rclase.Sala == actividad.sala.nombreSala %}
+                              {% set claseReservada = true %}
+                              <a href="#" data-toggle="modal" data-target="{{ '#' ~ reservadamodalId }}" style="text-decoration: none; color: black;">
+                            {% else %}
+                              <a href="#" data-toggle="modal" data-target="{{ '#' ~ modalId }}" style="text-decoration: none; color: black;">
+                          {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                {% endif %}
                     <div>
                         {{ actividad.actividad.actividad }}<br>
                         {{ actividad.sala.nombreSala }}<br>
                         {{ actividad.capacidadvar }}/{{ actividad.capacidad }}
+                        {% set claseReservada = false %}
+                        {% for rclase in clasesreservadas %}
+                          {% if not claseReservada %}
+                              {% if rclase.fechaActividad|date('Y-m-d') == fechasSemana[diaTraducido]|date('Y-m-d') and rclase.horaActividad|date('H:i') == actividad.hora.hora|date('H:i') and rclase.actividad.id == actividad.actividad.id and rclase.Sala == actividad.sala.nombreSala %}
+                                  {% set claseReservada = true %}
+                                  <p>Clase reservada</p>
+                              {% endif %}
+                          {% endif %}
+                        {% endfor %}
                     </div>
                   </a>
                 </div>
                 {% endif %}
-                                  <!-- Modal -->
+                  <!-- Modal Reservar -->
                   <div class="modal fade" id="{{ modalId }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
@@ -116,23 +165,41 @@
                           <input type="hidden" id="historico_clases_fecha_Actividad_month" name="historico_clases[fecha_Actividad][month]" value="{{fechasSemana[diaTraducido]|date('m')|trim('0')}}"/>
                           <input type="hidden" id="historico_clases_fecha_Actividad_day" name="historico_clases[fecha_Actividad][day]" value="{{fechasSemana[diaTraducido]|date('d')|trim('0')}}"/>
                           <input type="hidden" id="historico_clases_fecha_Actividad_year" name="historico_clases[fecha_Actividad][year]" value="{{fechasSemana[diaTraducido]|date('Y')}}"/>
-                          <input type="hidden" id="historico_clases_HoraActividad_hour" name="historico_clases[HoraActividad][hour]" value="{{actividad.hora.hora|date('H')|trim('0')}}">
+                          <input type="hidden" id="historico_clases_HoraActividad_hour" name="historico_clases[HoraActividad][hour]" value="{{actividad.hora.hora|date('H')}}">
                           <input type="hidden" id="historico_clases_HoraActividad_minute" name="historico_clases[HoraActividad][minute]" value="0">
                           <input type="hidden" id="historico_clases_actividad" name="historico_clases[actividad]" value="{{actividad.actividad.id}}">
+                          <input type="hidden" id="historico_clases_Horario" name="historico_clases[Horario]" value="{{actividad.id}}">
                           <input type="hidden" id="historico_clases_usuario" name="historico_clases[usuario]" value="{{userid}}">
+                          <input type="hidden" id="historico_clases_Sala" name="historico_clases[Sala]" value="{{actividad.sala.nombreSala}}">
                           {# <input type="hidden" name="_tokenHC" value="{{ csrf_token('autenticaHC') }}"> #}
                             <button type="submit" class="btn btn-primary">Reservar</button>
-                        </form> 
-
+                        </form>
                         </div>
-                          {# <form name="historico_clases" action="{{ path('app_horario_index') }}" method="post">
-                              <input type="hidden" name="fechaactividad" value="{{fechasSemana[diaTraducido]|date('Y-m-d')}}" />
-                              <input type="hidden" name="horaactividad" value="{{actividad.hora.hora|date('H:i')}}" />
-                              <input type="hidden" name="actividad" value="{{actividad.actividad.id}}" />
-                              <input type="hidden" name="user" value="{{userid}}" />
-                            <button type="submit" class="btn btn-primary">Reservar</button>
-                          </form> #}
-                          
+                        </div>
+                      </div>
+                    </div>
+
+                   <!-- Modal Reservado -->
+                  <div class="modal fade" id="{{ reservadamodalId }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="{{ reservadamodalId }}Title">Clase Reservada</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body" style="text-align: left;">
+                        {% set diaTraducido = dia|trans %}
+                          <p>
+
+                            Su clase de <b>{{actividad.actividad.actividad}}</b> En la sala "<b>{{ actividad.sala.nombreSala }}</b>"<br>
+                             el día <b>{{actividad.dia.dia}}</b> <b>{{fechasSemana[diaTraducido]|date('d-m-Y')}}</b> a las <b>{{actividad.hora.hora|date('H:i')}}</b> esta reservada
+                          </p> 
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
                         </div>
                       </div>
                     </div>
