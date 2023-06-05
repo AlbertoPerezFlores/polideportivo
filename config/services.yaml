@@ -7,7 +7,7 @@ parameters:
     app.upload_directory: '%kernel.project_dir%/public/custom/imagenes'
 
 services:
-    App\Command\SetUserRolesCommand:
+    App\command\SetUserRolesCommand:
         tags: [console.command]
         arguments:
             $userRepository: '@App\Repository\UserRepository'
@@ -26,7 +26,7 @@ services:
             - '../src/Kernel.php'
 
     
-    App\Command\UpdateCapacidadVarCommand:
+    App\command\UpdateCapacidadVarCommand:
         arguments:
             $entityManager: '@doctrine.orm.default_entity_manager'
         tags:

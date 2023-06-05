@@ -1,7 +1,7 @@
 <?php
 // src/Command/UpdateCapacidadVarCommand.php
 
-namespace App\Command;
+namespace App\command;
 
 use App\Entity\Horario;
 use Doctrine\ORM\EntityManagerInterface;
