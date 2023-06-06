@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\PerfilUsuario;
 use App\Form\UserType;
 use App\Repository\HistoricoClasesRepository;
+use App\Repository\PerfilUsuarioRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,11 +62,23 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="app_user_show", methods={"GET"})
      */
-    public function show(User $user, HistoricoClasesRepository $HistoricoClasesRepository): Response
+    public function show(User $user, HistoricoClasesRepository $HistoricoClasesRepository, PerfilUsuarioRepository $perfilUsuarioRepository, UserRepository $userRepository): Response
     {
         $hoy = new \DateTime();
 
         $userId = $user->getId();
+        $perfil = $user->getPerfil();
+
+        if($perfil == null)
+        {
+            $perfil = new PerfilUsuario();
+
+            $perfilUsuarioRepository->add($perfil, true);
+            
+            $user->setPerfil($perfil);
+            $userRepository->add($user, true);
+        }
+
         $historicoClases = $HistoricoClasesRepository->createQueryBuilder('hc')
         ->where('hc.usuario = :userId')
         ->setParameter('userId', $userId)
