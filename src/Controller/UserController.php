@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\PerfilUsuario;
 use App\Form\UserType;
+use App\Repository\HistoricoClasesRepository;
 use App\Repository\PerfilUsuarioRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 
 
 /**
@@ -60,11 +62,34 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="app_user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(User $user, HistoricoClasesRepository $HistoricoClasesRepository, PerfilUsuarioRepository $perfilUsuarioRepository, UserRepository $userRepository): Response
     {
+        $hoy = new \DateTime();
+
+        $userId = $user->getId();
+        $perfil = $user->getPerfil();
+
+        if($perfil == null)
+        {
+            $perfil = new PerfilUsuario();
+
+            $perfilUsuarioRepository->add($perfil, true);
+            
+            $user->setPerfil($perfil);
+            $userRepository->add($user, true);
+        }
+
+        $historicoClases = $HistoricoClasesRepository->createQueryBuilder('hc')
+        ->where('hc.usuario = :userId')
+        ->setParameter('userId', $userId)
+        ->orderBy('hc.fecha_Actividad', 'DESC')
+        ->getQuery()
+        ->getResult();
+
         return $this->render('user/show.html.twig', [
-            'user' => $user
-            // 'userprofile' => $perfilUsuario,
+            'user' => $user,
+            'historicoclases' => $historicoClases,
+            'hoy' => $hoy,
         ]);
     }
 

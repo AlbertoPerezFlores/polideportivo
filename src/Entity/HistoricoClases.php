@@ -36,36 +36,36 @@ class HistoricoClases
      */
     private $fecha_Actividad;
 
-    public function __construct()
-    {
-        $this->actividad = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $HoraActividad;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Horario::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Horario;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $Sala;
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, Actividades>
-     */
-    public function getActividad(): Collection
+    public function getActividad(): ?Actividades
     {
         return $this->actividad;
     }
 
-    public function addActividad(Actividades $actividad): self
+    public function setActividad(?Actividades $actividad): self
     {
-        if (!$this->actividad->contains($actividad)) {
-            $this->actividad[] = $actividad;
-        }
-
-        return $this;
-    }
-
-    public function removeActividad(Actividades $actividad): self
-    {
-        $this->actividad->removeElement($actividad);
+        $this->actividad = $actividad;
 
         return $this;
     }
@@ -93,4 +93,41 @@ class HistoricoClases
 
         return $this;
     }
+
+    public function getHoraActividad(): ?\DateTimeInterface
+    {
+        return $this->HoraActividad;
+    }
+
+    public function setHoraActividad(\DateTimeInterface $HoraActividad): self
+    {
+        $this->HoraActividad = $HoraActividad;
+
+        return $this;
+    }
+
+    public function getHorario(): ?horario
+    {
+        return $this->Horario;
+    }
+
+    public function setHorario(?horario $Horario): self
+    {
+        $this->Horario = $Horario;
+
+        return $this;
+    }
+
+    public function getSala(): ?string
+    {
+        return $this->Sala;
+    }
+
+    public function setSala(?string $Sala): self
+    {
+        $this->Sala = $Sala;
+
+        return $this;
+    }
+
 }

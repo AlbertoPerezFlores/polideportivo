@@ -87,4 +87,36 @@ class HistoricoClasesController extends AbstractController
 
         return $this->redirectToRoute('app_historico_clases_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    public function AddReserva($request ,$historicoClase, historicoClasesRepository $historicoClasesRepository): Response
+    {
+           $fechaActividad = \DateTime::createFromFormat('d-m-Y', $request->request->get('fechaactividad'));
+           $horaActividad = \DateTime::createFromFormat('H:i', $request->request->get('horaactividad'));
+           $Usuario = $request->request->get('user');
+           $actividad = $request->request->get('actividad');
+
+           // Asignar los valores al objeto HistoricoClases
+           $historicoClase->setFechaActividad($fechaActividad);
+           $historicoClase->setHoraActividad($horaActividad);
+           $historicoClase->setusuario($Usuario);
+           $historicoClase->setActividad($actividad);
+
+           $historicoClasesRepository->add($historicoClase, true);
+
+           //resta 1 a la capacidad
+           //$this->capacidadReserva($request, $horarioRepository);
+
+           return $this->redirectToRoute('app_horario_index', [], Response::HTTP_SEE_OTHER);
+    
+       
+    }
+
+    public function creaForm($historicoClase, $request)
+    {
+        $form = $this->createForm(HistoricoClasesType::class, $historicoClase);
+        $form->handleRequest($request);
+
+        return $form;
+    }
 }

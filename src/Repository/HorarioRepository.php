@@ -59,13 +59,13 @@ class HorarioRepository extends ServiceEntityRepository
        ;
    }
 
-//    public function findOneBySomeField($value): ?Horario
-//    {
-//        return $this->createQueryBuilder('h')
-//            ->andWhere('h.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findOneByid($value): ?Horario
+   {
+       return $this->createQueryBuilder('h')
+           ->andWhere('h.id = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getOneOrNullResult()
+       ;
+   }
 }

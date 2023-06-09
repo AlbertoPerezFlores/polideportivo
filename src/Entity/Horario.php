@@ -30,7 +30,7 @@ class Horario
     private $Sala;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Horahorario::class)
+     * @ORM\ManyToOne(targetEntity=HoraHorario::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $Hora;
@@ -45,6 +45,11 @@ class Horario
      * @ORM\JoinColumn(nullable=false)
      */
     private $Dia;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $CapacidadVar;
 
     public function getId(): ?int
     {
@@ -75,12 +80,12 @@ class Horario
         return $this;
     }
 
-    public function getHora(): ?Horahorario
+    public function getHora(): ?HoraHorario
     {
         return $this->Hora;
     }
 
-    public function setHora(?Horahorario $Hora): self
+    public function setHora(?HoraHorario $Hora): self
     {
         $this->Hora = $Hora;
 
@@ -107,6 +112,18 @@ class Horario
     public function setDia(?Dias $Dia): self
     {
         $this->Dia = $Dia;
+
+        return $this;
+    }
+
+    public function getCapacidadVar(): ?int
+    {
+        return $this->CapacidadVar;
+    }
+
+    public function setCapacidadVar(?int $CapacidadVar): self
+    {
+        $this->CapacidadVar = $CapacidadVar;
 
         return $this;
     }

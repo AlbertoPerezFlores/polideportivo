@@ -7,10 +7,11 @@ parameters:
     app.upload_directory: '%kernel.project_dir%/public/custom/imagenes'
 
 services:
-    App\Command\SetUserRolesCommand:
-        tags: [console.command]
-        arguments:
-            $userRepository: '@App\Repository\UserRepository'
+    # App\Command\SetUserRolesCommand:
+    #     tags: [console.command]
+    #     arguments:
+    #         $userRepository: '@App\Repository\UserRepository'
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -21,9 +22,13 @@ services:
     App\:
         resource: '../src/'
         exclude:
+            - '../src/command/'
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            - '../src/Controller/ApiLoginController.php'
+
+    
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
