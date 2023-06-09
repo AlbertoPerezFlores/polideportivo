@@ -92,7 +92,7 @@
               <div class="card mb-3 card-escuela" style="max-width: 100%; min-height: 310px;">
                 <div class="row no-gutters">
                   <div class="col-md-3">
-                    <img class="img-fluid img-escuela" src="..{{ noticia.imagen }}">
+                    <img class="img-fluid img-escuela"  src="..{{ noticia.imagen }}">
                   </div>
                   <div class="col-md-7">
                     <div class="card-body text-card-escuela">
@@ -116,14 +116,14 @@
               <div class="card mb-3 card-escuela" style="max-width: 100%; min-height: 310px;">
                 <div class="row no-gutters">
                   <div class="col-md-3">
-                    <img class="img-fluid img-escuela" src="..{{ noticia.imagen }}">
+                    <img class="img-fluid img-escuela" style="height: 170px; margin-left: 30px;" src="..{{ noticia.imagen }}">
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-8" style="margin-left: 30px;">
                     <div class="card-body text-card-escuela">
                       <h5 class="card-title">{{ noticia.titulo }}</h5>
                       <p class="card-text">{{ noticia.descrip }}
                       </p>
-                        <a type="button" class="btn btn-primary btn-block leermas" href="{{ path('app_noticias_show', {'id': noticia.id}) }}">Leer más</a>
+                        <a type="button" class="btn btn-primary btn-block leermas" href="{{ path('app_noticias_show', {'id': noticia.id}) }}">Leer má22s</a>
                       </div>
                   </div>
                 </div>
