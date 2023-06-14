@@ -1,13 +1,146 @@
-{% extends 'base.html.twig' %}
+{% extends 'default.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{# {% block title %}
+  Edit User
+{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
+  <h1>Edit User</h1>
 
     {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('app_user_index') }}">back to list</a>
 
     {{ include('user/_delete_form.html.twig') }}
+
+{% endblock %} #}
+
+{% block body %}
+
+              <section>
+            <div class="parallax-container breadcrumb-modern bg-gray-darkest" data-parallax-img="{{ asset('images/background-04-1920x750.jpg') }}">
+              <div class="parallax-content"> 
+                <div class="container section-top-98 section-bottom-34 section-lg-bottom-66 section-lg-98 section-xl-top-110 section-xl-bottom-41">
+                  <h2 class="d-none d-lg-block offset-top-30"><span class="big">Perfil</span></h2>
+                  <ul class="list-inline list-inline-dashed">
+                    <li class="list-inline-item"><a href="/">Inicio</a></li>
+                    <li class="list-inline-item">Perfil
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </header>
+      <br><br>
+      <div class="container" >
+      {{ include('user/_form.html.twig', {'button_label': 'Guardar', 'button_attr': {'class': 'btn btn-block btn-primary'}}) }}
+          {# <div class="row"> #}
+                {# <div class="col-md-8 col-md-offset-2" style="margin-left:15%;" >
+                    <form name="user_update" method="post">
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title" style="text-align:center";>Información del perfil</h3>
+                        </div> 
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <label style="font-weight: bold;">Nombre</label>
+                                    <input type="text" id="user_update_lastname" name="user_update[lastname]" autocomplete="off" class="form-control" placeholder="Nombre" >
+                                    <label></label>
+                                </div>
+                                <div class="col-xs-6">
+                                    <label style="font-weight: bold;">Apellido</label>
+                                    <input type="text" id="user_update_firstname" name="user_update[firstname]" autocomplete="off" class="form-control" placeholder="Apellido" >
+                                    <label></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label style="font-weight: bold;">E-mail</label>
+                                    <input type="email" id="user_update_email" name="user_update[email]" autocomplete="off" class="form-control" placeholder="E-mail" >
+                                    <label></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label style="font-weight: bold;">Altura</label>
+                                    <input type="number" id="Altura" min="1" max="220" name="" autocomplete="off" class="form-control" placeholder="Altura Metrica, ejemplos - 1.80 o 190, maximo hasta 220" >
+                                    <label></label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                   <label style="font-weight: bold;">Fecha Nacimiento</label>
+                                   <input style="width:30%;" name="FechaNac" type="text" required class="form-control" placeholder="Fecha Nacimiento" onfocus="(this.type = 'date')">
+                                   <label></label>
+                                </div>
+                            </div>          
+                            <br>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                   <label style="font-weight: bold;">Peso</label>
+								    <input style="width:30%;" min="1" max="220" name="Peso" type="number" required class="form-control" placeholder="Peso hasta 220Kg">
+                                   <label></label>
+                                </div>
+                            </div>          
+                            <br>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label style="font-weight: bold;">Género</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <label for="user_update_gender_0">Hombre</label>
+                                            <input type="radio" id="user_update_gender_0" name="user_update[gender]" autocomplete="off" class="task_field" style="margin-right: 4%;" value="m" checked="checked">
+                                            <label for="user_update_gender_1">Mujer</label>
+                                            <input type="radio" id="user_update_gender_1" name="user_update[gender]" autocomplete="off" class="task_field" value="f">
+                                        </div>
+                                    </div>
+
+                                    <label></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <div class="box-footer">
+                                        <button style="width:40%;" type="submit" class="btn btn-block btn-primary">Aceptar</button>
+                                    </div>
+                                </div>
+                                <br><br><br>
+                                <div class="col-xs-4"></div>
+                                <div class="col-xs-4">
+                                    <div class="box-footer">
+                                        <button style="width:40%;" type="button" class="btn btn-danger btn-block"> Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> #}
+                {# </div> #}
+        <ul class="list-group" style="margin-top: 4em; margin-bottom: 2em;">
+            {% for clase in historicoclases %}
+              {% if clase.fechaActividad|date('d-m-Y') >= hoy|date('d-m-Y') %}
+                <li class="list-group-item list-group-item-success">Clase de {{clase.actividad.actividad}} el dia {{clase.fechaActividad|date('d-m-Y')}} a las {{clase.horaActividad|date('H:i')}}</li>  
+              {% else %}
+                <li class="list-group-item list-group-item-danger">Clase de {{clase.actividad.actividad}} el dia {{clase.fechaActividad|date('d-m-Y')}} a las {{clase.horaActividad|date('H:i')}}</li>  
+              {% endif %}
+            {% endfor %}
+        </ul>
+        
+            <div class="pagination" style="margin-bottom: 4em;">
+              {{ knp_pagination_render(historicoclases) }}
+            </div>
+
+            </div>
+
+          
+      </div>
 {% endblock %}
+

@@ -54,13 +54,14 @@ class HistoricoClasesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?HistoricoClases
-//    {
-//        return $this->createQueryBuilder('h')
-//            ->andWhere('h.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findOneById($userId): array
+   {
+       return $this->createQueryBuilder('hc')
+        ->where('hc.usuario = :userId')
+        ->setParameter('userId', $userId)
+        ->orderBy('hc.fecha_Actividad', 'DESC')
+        ->getQuery()
+        ->getResult();
+       ;
+   }
 }
