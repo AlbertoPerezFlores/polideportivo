@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Knp\Component\Pager\PaginatorInterface;
 
 
 
@@ -60,7 +61,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_user_show", methods={"GET"})
+     * @Route("/{id}/view", name="app_user_edit", methods={"GET"})
      */
     public function show(User $user, HistoricoClasesRepository $HistoricoClasesRepository, PerfilUsuarioRepository $perfilUsuarioRepository, UserRepository $userRepository): Response
     {
@@ -94,22 +95,47 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_user_edit", methods={"GET", "POST"})
+     * @Route("/{id}", name="app_user_show", methods={"GET", "POST"})
      */
-    public function edit(Request $request, User $user, UserRepository $userRepository): Response
+    public function edit(Request $request, User $user, UserRepository $userRepository, PerfilUsuarioRepository $perfilUsuarioRepository, HistoricoClasesRepository $HistoricoClasesRepository, PaginatorInterface $paginator): Response
     {
+        $hoy = new \DateTime();
+
+        $userId = $user->getId();
+        $perfil = $user->getPerfil();
+
+        if($perfil == null)
+        {
+            $perfil = new PerfilUsuario();
+
+            $perfilUsuarioRepository->add($perfil, true);
+            
+            $user->setPerfil($perfil);
+            $userRepository->add($user, true);
+        }
+
+
+        $pagination = $paginator->paginate(
+            $HistoricoClasesRepository->findOneById($userId), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->add($user, true);
 
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            // return $this->redirectToRoute('app_user_show', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
+            'historicoclases' => $pagination,
+            'hoy' => $hoy,
         ]);
     }
 

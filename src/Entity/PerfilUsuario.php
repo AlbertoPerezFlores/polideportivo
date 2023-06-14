@@ -110,4 +110,5 @@ class PerfilUsuario
         return $this;
     }
     
+
 }
