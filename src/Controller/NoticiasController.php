@@ -32,7 +32,7 @@ class NoticiasController extends AbstractController
         $pagination = $paginator->paginate(
             $noticiasRepository->findAll(), /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            2 /*limit per page*/
+            5 /*limit per page*/
         );
 
         return $this->render('noticias/index.html.twig', [

@@ -63,7 +63,7 @@
         </div>
       </header>
       {# <!-- Page Content--> #}
-      <div class="container">
+      <div class="container" style="padding-top:60px">
         <div class="row login-content">
           <div class="col-md-6">
             <img src="images/home-01-480x480.jpg" alt="Image" class="img-fluid">
@@ -106,7 +106,7 @@
                   
                     {% if app.user %}
                         <div class="mb-3">
-                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                            Ustes entro como {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Salir de la sesion</a>
                         </div>
                     {% endif %}
                 {# <!--Fin formulario--> #}

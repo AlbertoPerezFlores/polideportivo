@@ -1065,6 +1065,8 @@ pre code {
 	.offset-sm-11 {
 		margin-left: 91.66667%;
 	}
+
+	
 }
 
 @media (min-width: 768px) {
@@ -1080,7 +1082,7 @@ pre code {
 	}
 	.col-md-1 {
 		flex: 0 0 8.33333%;
-		max-width: 8.33333%;
+		max-width: 8.33333%; 
 	}
 	.col-md-2 {
 		flex: 0 0 16.66667%;
@@ -1108,7 +1110,8 @@ pre code {
 	}
 	.col-md-8 {
 		flex: 0 0 66.66667%;
-		max-width: 66.66667%;
+		/* max-width: 66.66667%; */
+		max-width: 80%;
 	}
 	.col-md-9 {
 		flex: 0 0 75%;
@@ -1862,6 +1865,7 @@ pre code {
 	.table-responsive-sm > .table-bordered {
 		border: 0;
 	}
+	
 }
 
 @media (max-width: 767.98px) {
@@ -9995,11 +9999,11 @@ mark,
 }
 
 .contact-info dl dt, .contact-info dl dd a {
-	color: #434345;
+	color: #000000;
 }
 
 .contact-info dl dd a:hover {
-	color: #d01919;
+	color: #000000;
 }
 
 .row-30 {
@@ -22984,7 +22988,7 @@ fieldset[disabled] .swiper-slide-caption .btn-default {
 .rd-navbar-floated.rd-navbar-fixed .rd-navbar-toggle span:after, .rd-navbar-top-panel.rd-navbar-fixed .rd-navbar-toggle span:after, .rd-navbar-floated.rd-navbar-fixed .rd-navbar-toggle span:before, .rd-navbar-top-panel.rd-navbar-fixed .rd-navbar-toggle span:before, .rd-navbar-floated.rd-navbar-fixed .rd-navbar-toggle span, .rd-navbar-top-panel.rd-navbar-fixed .rd-navbar-toggle span {
 	width: 24px;
 	height: 4px;
-	background-color: black;
+	background-color: white;
 	backface-visibility: hidden;
 	border-radius: 0;
 }
@@ -23107,7 +23111,7 @@ fieldset[disabled] .swiper-slide-caption .btn-default {
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 280px;
+	width: 480px;
 	bottom: 0;
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
 	z-index: 15;
@@ -28185,6 +28189,7 @@ html[data-x-mode]:not(.lt-ie10) .not-animated {
 	/* position relative and z-index fix webkit rendering fonts issue */
 	position: relative;
 	z-index: 1;
+	padding-bottom: 40px;
 }
 
 .owl-carousel .owl-stage {
@@ -30938,6 +30943,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     .descripcion{
         flex: 0 10 100%;
     }
+	
 }
 
 .date-picker {
@@ -31356,3 +31362,4 @@ html:not(.ie-11):not(.ios) .parallax-disabled {
 {
 	width: 40%;
 }
+

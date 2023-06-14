@@ -3,12 +3,12 @@
 
 {% block body %}
           <section>
-            <div class="parallax-container breadcrumb-modern bg-gray-darkest" data-parallax-img="{{ asset('images/fotosPoli/Noticia.jpg') }}">
+            <div class="parallax-container breadcrumb-modern bg-gray-darkest" data-parallax-img="{{ asset('images/fotosPoli/CabeceraNoti3.jpg') }}">
               <div class="parallax-content"> 
                 <div class="container section-top-98 section-bottom-34 section-lg-bottom-66 section-lg-98 section-xl-top-124 section-xl-bottom-124">
-                  <h2 class="paddi" ><span class="big">Noticias</span></h2>
+                  <h2 class="paddi" ><span class="big" style="color:white">Noticias</span></h2>
                   <ul class="list-inline list-inline-dashed">
-                    <li class="list-inline-item"><a href="index.html">Inicio</a></li>
+                    <li class="list-inline-item" ><a href="index.html">Inicio</a></li>
                     <li class="list-inline-item">Noticias
                     </li>
                   </ul>
@@ -19,48 +19,39 @@
         </div>
       </header>
       <!-- Page Content-->
-          <div class="container">
-              {# {% if is_granted('ROLE_ADMIN')%}
-             <div class="buscador">
+          <div class="container" style="padding-top: 40px; padding-bottom: 70px;">
+              {% if is_granted('ROLE_ADMIN')%}
+             
               <div class="row">
                 <div class="col-md-8">
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon2" >
+                    {# <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon2" >
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search" style="font-size:24px"></i></button>
+                      <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search" style="font-size:24px"></i></button> #}
                     </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <a type="button" class="btn btn-primary btn-block" href="{{ path('app_noticias_new') }}">Añadir nueva noticia</a>
                 </div>
-              </div>
-            </div> 
-              {% else %} #}
+             
+           
+              {% else %}
             <div class="buscador">
                 <div class="row">
-                  {# <div class="col-md-12">
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon2" >
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" ><i class="fa fa-search" style="font-size:24px"></i></button>
-                      </div>
-                    </div>
-                  </div>  #}
-                   <br><br><br>  
-                   <br><br><br>  
+                  
                 </div>
             </div>
-              {# {% endif %} #}
+               {% endif %} 
               
               {% for noticia in pagination %}
               {% if is_granted('ROLE_ADMIN')%}
               <div class="card mb-3 card-escuela" style="max-width: 100%; min-height: 310px;">
                 <div class="row no-gutters">
                   <div class="col-md-3">
-                    <img class="img-fluid img-escuela"  src="..{{ noticia.imagen }}">
+                    <img class="img-fluid img-escuela" style="height: 140px;margin-left: 30px;" src="..{{ noticia.imagen }}">
                   </div>
-                  <div class="col-md-7">
+                  <div class="col-md-7" style="margin-left:20px;">
                     <div class="card-body text-card-escuela">
                       <h5 class="card-title">{{ noticia.titulo }}</h5>
                       <p class="card-text">{{ noticia.descrip }}
@@ -68,7 +59,7 @@
                         <a type="button" class="btn btn-primary btn-block leermas" href="{{ path('app_noticias_show', {'id': noticia.id}) }}">Leer más</a>
                       </div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-1" style="width: 15%;margin-left: -20px;padding-right: 10px;">
                     <div class="card-body text-card-escuela">
                       <a type="button" class="btn btn-primary btn-block" href="{{ path('app_noticias_edit', {'id': noticia.id}) }}"><i class="fa fa-pencil" style="font-size:24px"></i></a>
                     </div>
@@ -84,7 +75,7 @@
                   <div class="col-md-3">
                     <img class="img-fluid img-escuela" style="height: 170px; margin-left: 30px;" src="..{{ noticia.imagen }}">
                   </div>
-                  <div class="col-md-8" style="margin-left: 30px;">
+                  <div class="col-md-8" style="margin-left: 40px;">
                     <div class="card-body text-card-escuela">
                       <h5 class="card-title">{{ noticia.titulo }}</h5>
                       <p class="card-text">{{ noticia.descrip }}
@@ -100,11 +91,11 @@
                             <h1 colspan="7">No hay noticias</h1>
                         </tr>
             {% endfor %}
- <br><br><br>
+ {# <br><br><br> #}
             <div class="pagination">
               {{ knp_pagination_render(pagination) }}
             </div>
-            <br><br><br>
-            <br><br><br>
+            {# <br><br><br>
+            <br><br><br> #}
           </div>
 {% endblock %}
