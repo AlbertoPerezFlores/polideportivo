@@ -818,7 +818,7 @@ pre code {
 
 .col-12 {
 	flex: 0 0 100%;
-	max-width: 100%;
+	max-width: 100% ;
 }
 
 .order-first {
@@ -24162,7 +24162,7 @@ fieldset[disabled] .swiper-slide-caption .btn-default {
 
 .rd-navbar-floated.rd-navbar-static .rd-navbar-menu-wrap {
 	float: right;
-	margin-right: -114px;
+	margin-right: -30px;
 
 }
 
