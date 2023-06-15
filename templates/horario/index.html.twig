@@ -50,26 +50,27 @@
         </div>
       </header>
       <!-- Page Content-->
-<div class="container" style="padding-top:140px;padding-bottom:140px">
+<div class="container margin-container" style="max-width: 910px;">
 
-<table class="table table-sm text-center" style="margin-left:-140px; " >
+<div class="row">
+<table class="table text-center col-12">
   <thead>
     <tr>
       <th scope="col">Hora</th>
       {% for dia in dias %}
-        <th scope="col">{{ dia }}</th>
+        <th style="width:194px" scope="col">{{ dia }}</th>
       {% endfor %}
     </tr>
   </thead>
   <tbody style="font-size:12px">
     {% for hora in horas %}
       <tr>
-        <td style="padding-top: 10px;padding-bottom: 10px; width:100px;" scope="row" style="text-align: center; vertical-align: middle;">{{ hora }}</td>
+        <td scope="row" style="text-align: center; vertical-align: middle; width:100px;">{{ hora }}</td>
         {% for dia in dias %}
         {% set claseReservada = false %}
           {% set actividades = horarios|filter(a => a.hora.hora|date('H:i') == hora and a.dia.dia == dia) %}
-          <td>
-            <div style="width:194px" class="col-12 row aling-items-center" >
+          <td style="width:194px">
+            <div class="col-12 row aling-items-center" >
             {% if actividades|length > 0 %}
               {% for actividad in actividades %}
               {% set modalId = 'exampleModalCenter' ~ actividad.id %}
@@ -217,7 +218,7 @@
 {% if is_granted('ROLE_ADMIN')%}
     <a type="button" class="btn btn-primary btn-block" href="{{ path('app_horario_new') }}">Añadir nueva actividad</a>
 {% endif %}
-
+</div>
 </div>
 
 {% endblock %}

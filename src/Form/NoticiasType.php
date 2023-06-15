@@ -21,7 +21,7 @@ class NoticiasType extends AbstractType
             ->add('organizador')
             ->add('imagen',FileType::class,[
                 'data_class' => null,
-                'label' => 'Imagen'
+                'label' => 'Imagen',
             ])
             ->add('fechapublicacion',DateType::class,[
                 'widget' => 'single_text',

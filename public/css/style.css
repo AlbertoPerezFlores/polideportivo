@@ -31368,3 +31368,8 @@ html:not(.ie-11):not(.ios) .parallax-disabled {
 	width: 40%;
 }
 
+.margin-container
+{
+	margin-top: 6em;
+	margin-bottom: 6em;
+}
