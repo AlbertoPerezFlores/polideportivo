@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Ya hay un email registrado con este email")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
