@@ -46,7 +46,7 @@
               
               {% for noticia in pagination %}
               {% if is_granted('ROLE_ADMIN')%}
-              <div class="card mb-3 card-escuela" style="max-width: 100%; min-height: 310px;">
+              <div class="card mb-3 card-escuela" style="max-width: 100%; min-height: 310px; background-color: rgb(0 0 0 / 3%);">
                 <div class="row no-gutters">
                   <div class="col-md-3">
                     <img class="img-fluid img-escuela" style="height: 140px;margin-left: 30px;" src="..{{ noticia.imagen }}">
@@ -70,7 +70,7 @@
               </div>
             </div>
             {% else %}
-              <div class="card mb-3 card-escuela" style="max-width: 100%; min-height: 310px;">
+              <div class="card mb-3 card-escuela" style="max-width: 100%; min-height: 310px; background-color: rgb(0 0 0 / 3%);">
                 <div class="row no-gutters">
                   <div class="col-md-3">
                     <img class="img-fluid img-escuela" style="height: 170px; margin-left: 30px;" src="..{{ noticia.imagen }}">
