@@ -39,6 +39,11 @@ class HoraHorario
         return $this;
     }
 
+    public function getHoraAsString()
+    {
+        return $this->hora->format('H:i');
+    }
+
     public function __toString()
     {
         return $this->hora->format('H:i');

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 
 {% block title %}New Horario{% endblock %}
 
@@ -8,4 +8,34 @@
     {{ include('horario/_form.html.twig') }}
 
     <a href="{{ path('app_horario_index') }}">back to list</a>
+{% endblock %} #}
+
+
+{% extends 'default.html.twig' %}
+
+{% block body %}
+              <section>
+            <div class="parallax-container breadcrumb-modern bg-gray-darkest" data-parallax-img="{{ asset('images/fotosPoli/HorarioCab2.jpg') }}">
+              <div class="parallax-content"> 
+                <div class="container section-top-98 section-bottom-34 section-lg-bottom-66 section-lg-98 section-xl-top-124 section-xl-bottom-124">
+                  <h2 class="paddi"><span class="big">Horario</span></h2>
+                  <ul class="list-inline list-inline-dashed">
+                    <li class="list-inline-item"><a href="/">Inicio</a></li>
+                    <li class="list-inline-item">Horario
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </header>
+      <!-- Page Content-->
+<div class="container">
+    <h1 class="text-center">Nuevo Horario</h1>
+    <hr>
+    {{ include('horario/_form.html.twig') }}
+
+    <a href="{{ path('app_horario_index') }}"><button class="btn btn-primary" style="margin-top: 2em; margin-bottom: 2em">Volver al horario</button></a>
+</div>
 {% endblock %}
