@@ -125,7 +125,8 @@
                         </div>
                     </div> #}
                 {# </div> #}
-        <ul class="list-group" style="margin-top: 4em; margin-bottom: 2em;">
+                <H3>Tus reservas</H3>
+        <ul class="list-group" style="margin-top: 2em; margin-bottom: 2em;">
             {% for clase in historicoclases %}
               {% if clase.fechaActividad|date('d-m-Y') >= hoy|date('d-m-Y') %}
                 <li class="list-group-item list-group-item-success">Clase de {{clase.actividad.actividad}} el dia {{clase.fechaActividad|date('d-m-Y')}} a las {{clase.horaActividad|date('H:i')}}</li>  
