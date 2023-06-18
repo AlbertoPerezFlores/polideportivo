@@ -15,13 +15,13 @@
 
 {% block body %}
               <section>
-            <div class="parallax-container breadcrumb-modern bg-gray-darkest" data-parallax-img="{{ asset('images/fotosPoli/HorarioCab2.jpg') }}">
+            <div class="parallax-container breadcrumb-modern bg-gray-darkest" data-parallax-img="{{ asset('images/fotosPoli/CabeceraHora.jpg') }}">
               <div class="parallax-content"> 
                 <div class="container section-top-98 section-bottom-34 section-lg-bottom-66 section-lg-98 section-xl-top-124 section-xl-bottom-124">
-                  <h2 class="paddi"><span class="big">Horario</span></h2>
+                  <h2 class="paddi"><span class="big" style="color:white; text-shadow: 1px 1px 2px black;">Horario</span></h2>
                   <ul class="list-inline list-inline-dashed">
-                    <li class="list-inline-item"><a href="/">Inicio</a></li>
-                    <li class="list-inline-item">Horario
+                    <li class="list-inline-item"><a href="/" style="color:white; text-shadow: 1px 1px 2px black;">Inicio</a></li>
+                    <li class="list-inline-item" style="color:white; text-shadow: 1px 1px 2px black;">Horario
                     </li>
                   </ul>
                 </div>
@@ -31,8 +31,8 @@
         </div>
       </header>
       <!-- Page Content-->
-<div class="container">
-    <h1 class="text-center">Nuevo Horario</h1>
+<div class="container margin-container">
+    <h1 class="text-center">Agrega una nueva clase al horario</h1>
     <hr>
     {{ include('horario/_form.html.twig') }}
 
