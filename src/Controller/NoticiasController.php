@@ -30,7 +30,7 @@ class NoticiasController extends AbstractController
     public function index(NoticiasRepository $noticiasRepository, PaginatorInterface $paginator,Request $request): Response
     {
         $pagination = $paginator->paginate(
-            $noticiasRepository->findAll(), /* query NOT result */
+            $noticiasRepository->findAllOrderByFecha(), /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
             5 /*limit per page*/
         );

@@ -63,4 +63,12 @@ class NoticiasRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+        public function findAllOrderByFecha(): array
+        {
+            return $this->createQueryBuilder('n')
+                ->orderBy('n.Fecha_publicacion', 'DESC')
+                ->getQuery()
+                ->getResult()
+            ;
+        }
 }
